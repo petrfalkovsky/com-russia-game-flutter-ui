@@ -1,0 +1,21 @@
+{
+  "@@comment": "SHARED_LOCALE",
+  "RC": "RC",
+  "rub": "%d ₽",
+  "back": "Назад",
+  
+  "@@comment": "REFERRAL_PROGRAM_LOCALE",
+  "ref_program": "Программа",
+  "ref_referral": "Реферальная",
+  "ref_description": "Приглашай друзей, чтобы играть и развиваться на сервере вместе!\nПриведенный реферал засчитывается, когда он набрал 3-й игровой уровень",
+  "ref_your_turn": "Твой код",
+  "ref_donate_procent": "% от доната",
+  "ref_upgrade": "Улучшить до %d%",
+  "ref_max_upgraded": "Улучшено на макс.",
+  "ref_referrers": "Приведенных рефералов",
+  "ref_translate": "Накоплено",
+  "ref_claim": "Забрать",
+  "ref_you_invite": "Вы пригласили:",
+  "ref_persons": "Чел.",
+  "ref_get": "Получить"
+}
