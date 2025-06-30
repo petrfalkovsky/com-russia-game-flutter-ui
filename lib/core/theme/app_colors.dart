@@ -7,7 +7,7 @@ class AppColors {
   static const Color gray = Color(0xFF838383);
 
   // Referral Program
-  static const Color refBrown = Color(0xFF492E08);
+
   static const Color refYellowLight = Color(0xFFFFCF36);
   static const Color refYellowDark = Color(0xFFF8A436);
   static const Color refYellowLight1 = Color(0xFFF5D73D);
@@ -17,4 +17,6 @@ class AppColors {
   static const Color refGreenLight1 = Color(0xFFC6E600);
   static const Color refGreenDark2 = Color(0xFF9FF51F);
   static const Color refGreen = Color(0xFFC6ED62);
+  static const Color refBrown = Color(0xFF492E08);
+  static const Color refBrown2 = Color(0xFF2C1D0C);
 }

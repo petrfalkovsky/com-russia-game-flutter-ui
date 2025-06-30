@@ -18,8 +18,10 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(
+      _current != null,
+      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
+    );
     return _current!;
   }
 
@@ -41,8 +43,10 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
@@ -52,42 +56,22 @@ class S {
 
   /// `RC`
   String get RC {
-    return Intl.message(
-      'RC',
-      name: 'RC',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('RC', name: 'RC', desc: '', args: []);
   }
 
-  /// `%d ₽`
+  /// `₽`
   String get rub {
-    return Intl.message(
-      '%d ₽',
-      name: 'rub',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('₽', name: 'rub', desc: '', args: []);
   }
 
   /// `Назад`
   String get back {
-    return Intl.message(
-      'Назад',
-      name: 'back',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Назад', name: 'back', desc: '', args: []);
   }
 
   /// `Программа`
   String get ref_program {
-    return Intl.message(
-      'Программа',
-      name: 'ref_program',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Программа', name: 'ref_program', desc: '', args: []);
   }
 
   /// `Реферальная`
@@ -112,12 +96,7 @@ class S {
 
   /// `Твой код`
   String get ref_your_turn {
-    return Intl.message(
-      'Твой код',
-      name: 'ref_your_turn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Твой код', name: 'ref_your_turn', desc: '', args: []);
   }
 
   /// `% от доната`
@@ -162,22 +141,12 @@ class S {
 
   /// `Накоплено`
   String get ref_translate {
-    return Intl.message(
-      'Накоплено',
-      name: 'ref_translate',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Накоплено', name: 'ref_translate', desc: '', args: []);
   }
 
   /// `Забрать`
   String get ref_claim {
-    return Intl.message(
-      'Забрать',
-      name: 'ref_claim',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Забрать', name: 'ref_claim', desc: '', args: []);
   }
 
   /// `Вы пригласили:`
@@ -192,22 +161,12 @@ class S {
 
   /// `Чел.`
   String get ref_persons {
-    return Intl.message(
-      'Чел.',
-      name: 'ref_persons',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Чел.', name: 'ref_persons', desc: '', args: []);
   }
 
   /// `Получить`
   String get ref_get {
-    return Intl.message(
-      'Получить',
-      name: 'ref_get',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Получить', name: 'ref_get', desc: '', args: []);
   }
 }
 

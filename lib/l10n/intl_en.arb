@@ -1,7 +1,7 @@
 {
   "@@comment": "SHARED_LOCALE",
   "RC": "RC",
-  "rub": "%d ₽",
+  "rub": "₽",
   "back": "Назад",
   
   "@@comment": "REFERRAL_PROGRAM_LOCALE",
