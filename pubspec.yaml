@@ -24,6 +24,7 @@ dependencies:
   gradient_borders: ^1.0.1
   percent_indicator: ^4.2.3
   figma_squircle: ^0.6.3
+  flutter_inner_shadow: ^0.0.1
 
   # State management / Injection
   bloc: ^9.0.0

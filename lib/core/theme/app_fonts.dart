@@ -12,7 +12,7 @@ abstract class AppFonts {
     Color color,
     FontWeight fontWeight,
   ) {
-    String fontName = "$fontAkrobat${_weightToString(fontWeight)}";
+    String fontName = fontAkrobat;
 
     return TextStyle(
       fontFamily: fontName,
@@ -28,7 +28,7 @@ abstract class AppFonts {
     Color color,
     FontWeight fontWeight,
   ) {
-    String fontName = "$fontAkrobat${_weightToString(fontWeight)}";
+      String fontName = fontAkrobat;
 
     return TextStyle(
       fontFamily: fontName,
@@ -45,7 +45,7 @@ abstract class AppFonts {
     Color color,
     FontWeight fontWeight,
   ) {
-    String fontName = "$fontHalvar${_weightToString(fontWeight)}";
+    String fontName = fontHalvar;
 
     return TextStyle(
       fontFamily: fontName,
@@ -61,7 +61,7 @@ abstract class AppFonts {
     Color color,
     FontWeight fontWeight,
   ) {
-    String fontName = "$fontHalvar${_weightToString(fontWeight)}";
+   String fontName = fontHalvar;
 
     return TextStyle(
       fontFamily: fontName,
@@ -1123,7 +1123,7 @@ abstract class AppFonts {
       34,
       color,
       fontWeight,
-    ).copyWith(height: sdp(context, 24) / sdp(context, 34));
+    ).copyWith(height: sdp(context, 34) / sdp(context, 34));
   }
 
   static TextStyle fontHalvar32sdpW(BuildContext context, Color color, FontWeight fontWeight) {

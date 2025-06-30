@@ -85,10 +85,10 @@ packages:
     dependency: "direct main"
     description:
       name: chewie
-      sha256: "4d9554a8f87cc2dc6575dfd5ad20a4375015a29edd567fd6733febe6365e2566"
+      sha256: "193bb3e7fb40f5333016b7de53b4e387d4eaff06b06ea1b1c3c12cf8d030a3ed"
       url: "https://pub.dev"
     source: hosted
-    version: "1.11.3"
+    version: "1.12.0"
   clock:
     dependency: transitive
     description:
@@ -310,6 +310,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+  flutter_inner_shadow:
+    dependency: "direct main"
+    description:
+      name: flutter_inner_shadow
+      sha256: b50693ec5214700340e20b920835af4504b788673da2217a794eea95309a4de0
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.1"
   flutter_layout_grid:
     dependency: "direct main"
     description:
@@ -966,10 +974,10 @@ packages:
     dependency: transitive
     description:
       name: video_player_platform_interface
-      sha256: df534476c341ab2c6a835078066fc681b8265048addd853a1e3c78740316a844
+      sha256: cf2a1d29a284db648fd66cbd18aacc157f9862d77d2cc790f6f9678a46c1db5a
       url: "https://pub.dev"
     source: hosted
-    version: "6.3.0"
+    version: "6.4.0"
   video_player_web:
     dependency: transitive
     description:
