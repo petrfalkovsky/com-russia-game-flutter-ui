@@ -31,7 +31,7 @@ class ReferralProgramScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  /// ЭППБАР
+                  /// ЭППБАР: БАЛАНС РУБ, БАЛАНС RC, КНОПКА ЗАКРЫТЬ
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -77,6 +77,7 @@ class ReferralProgramScreen extends StatelessWidget {
                         outerBlurRadius: _sdp(60),
                         innerBlurRadius: _sdp(50),
                       ),
+
                       _sdp(80).width,
 
                       /// КНОПКА ЗАКРЫТЬ
@@ -91,14 +92,16 @@ class ReferralProgramScreen extends StatelessWidget {
 
                   _sdp(67).height,
 
-                  /// КНОПКИ КОПИРОВАТЬ ПРОМОКОД, ПОДЕЛИТЬСЯ,
+                  /// КНОПКИ КОПИРОВАТЬ ПРОМОКОД, ПОДЕЛИТЬСЯ, НАКОПЛЕНИЯ ЗАБРАТЬ
                   SizedBox(
-                    width: _sdp(823),
+                    width: _sdp(823 * 0.99),
                     child: Column(
                       children: [
+                        /// КНОПКИ КОПИРОВАТЬ ПРОМОКОД, ПОДЕЛИТЬСЯ
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            /// ПРОМОКОД
+                            /// ТВОЙ ПРОМОКОД
                             PromocodeWidget(
                               textValue: 'A1B2C3D4',
                               height: _sdp(150),
@@ -118,8 +121,7 @@ class ReferralProgramScreen extends StatelessWidget {
                               onTapEdit: () {},
                             ),
 
-                            _sdp(38).width,
-
+                            /// КНОПКА ПОДЕЛИТЬСЯ
                             CloseWidget(
                               iconPath: AppImages.refShare,
                               size: _sdp(150),
@@ -134,25 +136,42 @@ class ReferralProgramScreen extends StatelessWidget {
                             ),
                           ],
                         ),
+
                         _sdp(67).height,
 
+                        /// НАКОПЛЕНО
                         Row(
                           children: [
-                            /// НАКОПЛЕНО
                             Expanded(
                               child: AccumulatedWidget(
+                                // функционал виджета
+                                textValue: '1901920129301',
+                                onTap: () {},
+                                isActiveButton: true,
+
+                                // стильи виджета
                                 leftFlex: 4,
                                 rightFlex: 2,
-                                leftBorderGradientColors: [Colors.red, Colors.white, Colors.red],
+                                leftBorderGradientColors: [
+                                  AppColors.refGrey2,
+                                  AppColors.white.withOpacity(.1),
+                                  AppColors.white.withOpacity(.1),
+                                  AppColors.refGrey2,
+                                ],
                                 cornerRadius: _sdp(40),
-                                leftFillGradientColors: [Colors.blue, Colors.blue],
-                                rightFillGradientColors: [AppColors.refGreenLight1, AppColors.refGreenDark2],
-                                rightFillColor: Colors.green.shade700,
-                                textValue: 'A1B2C3D4',
+                                leftFillGradientColors: [
+                                  AppColors.refGrey2,
+                                  AppColors.refGrey2,
+                                  AppColors.refGrey2,
+                                ],
+                                rightFillGradientColors: [
+                                  AppColors.refGreenLight1,
+                                  AppColors.refGreenDark2,
+                                ],
                                 height: _sdp(150),
                                 borderWidth: _sdp(2),
-                                onTapCopy: () {},
-                                onTapEdit: () {},
+                                leadIconPath: AppImages.refCoins,
+                                leadIconSize: _sdp(60),
                               ),
                             ),
                           ],

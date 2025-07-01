@@ -13,7 +13,7 @@
   "ref_upgrade": "Улучшить до %d%",
   "ref_max_upgraded": "Улучшено на макс.",
   "ref_referrers": "Приведенных рефералов",
-  "ref_translate": "Накоплено",
+  "ref_accumulated": "Накоплено",
   "ref_claim": "Забрать",
   "ref_you_invite": "Вы пригласили:",
   "ref_persons": "Чел.",
