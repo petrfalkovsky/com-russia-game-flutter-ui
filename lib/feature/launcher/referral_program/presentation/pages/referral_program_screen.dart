@@ -2,6 +2,7 @@ import 'package:com_russia_game_flutter_ui/core/extensions/sizedbox_extension.da
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_images.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
+import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/accumulated_widget.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/balance_widget.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/close_widget.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/promocode_widget.dart';
@@ -12,7 +13,7 @@ class ReferralProgramScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _sdp(double value) => sdpW(context, value) * 1;
+    _sdp(double value) => sdpW(context, value) * 1.08;
 
     return Material(
       type: MaterialType.transparency,
@@ -59,6 +60,7 @@ class ReferralProgramScreen extends StatelessWidget {
                           Colors.grey.withOpacity(.2),
                         ],
                       ),
+
                       _sdp(28).width,
 
                       /// БАЛАНС RC
@@ -90,66 +92,73 @@ class ReferralProgramScreen extends StatelessWidget {
                   _sdp(67).height,
 
                   /// КНОПКИ КОПИРОВАТЬ ПРОМОКОД, ПОДЕЛИТЬСЯ,
-                  Row(
-                    children: [
-                      /// ПРОМОКОД
-                      PromocodeWidget(
-                        textValue: 'A1B2C3D4',
-                        height: _sdp(150),
-                        addIconPaddingLeft: _sdp(48),
-                        addIconPaddingRight: _sdp(48),
-                        borderWidth: _sdp(2),
-                        borderGradientColors: [
-                          Colors.grey.withOpacity(.1),
-                          Colors.grey.withOpacity(.3),
-                          Colors.transparent,
-                        ],
-                        iconSize: _sdp(50),
-                        secondIconSize: _sdp(60),
-                        cornerRadius: _sdp(40),
-                        copyIconSize: _sdp(47),
-                        onTapCopy: () {},
-                        onTapEdit: () {},
-                      ),
+                  SizedBox(
+                    width: _sdp(823),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            /// ПРОМОКОД
+                            PromocodeWidget(
+                              textValue: 'A1B2C3D4',
+                              height: _sdp(150),
+                              addIconPaddingLeft: _sdp(48),
+                              addIconPaddingRight: _sdp(48),
+                              borderWidth: _sdp(2),
+                              borderGradientColors: [
+                                Colors.grey.withOpacity(.1),
+                                Colors.grey.withOpacity(.3),
+                                Colors.transparent,
+                              ],
+                              iconSize: _sdp(50),
+                              secondIconSize: _sdp(60),
+                              cornerRadius: _sdp(40),
+                              copyIconSize: _sdp(47),
+                              onTapCopy: () {},
+                              onTapEdit: () {},
+                            ),
 
-                      _sdp(38).width,
+                            _sdp(38).width,
 
-                      CloseWidget(
-                        iconPath: AppImages.refShare,
-                        size: _sdp(150),
-                        fillGradientColors: [AppColors.refYellowLight1, AppColors.refYellowDark2],
-                        cornerRadius: _sdp(40),
-                        borderWidth: _sdp(0),
-                        iconSize: _sdp(60),
-                        iconColor: AppColors.black,
-                      ),
-                    ],
-                  ),
+                            CloseWidget(
+                              iconPath: AppImages.refShare,
+                              size: _sdp(150),
+                              fillGradientColors: [
+                                AppColors.refYellowLight1,
+                                AppColors.refYellowDark2,
+                              ],
+                              cornerRadius: _sdp(40),
+                              borderWidth: _sdp(0),
+                              iconSize: _sdp(60),
+                              iconColor: AppColors.black,
+                            ),
+                          ],
+                        ),
+                        _sdp(67).height,
 
-                  _sdp(67).height,
-
-                  Row(
-                    children: [
-                      /// НАКОПЛЕНО
-                      PromocodeWidget(
-                        textValue: 'A1B2C3D4',
-                        height: _sdp(150),
-                        addIconPaddingLeft: _sdp(48),
-                        addIconPaddingRight: _sdp(48),
-                        borderWidth: _sdp(2),
-                        borderGradientColors: [
-                          Colors.grey.withOpacity(.1),
-                          Colors.grey.withOpacity(.3),
-                          Colors.transparent,
-                        ],
-                        iconSize: _sdp(50),
-                        secondIconSize: _sdp(60),
-                        cornerRadius: _sdp(40),
-                        copyIconSize: _sdp(47),
-                        onTapCopy: () {},
-                        onTapEdit: () {},
-                      ),
-                    ],
+                        Row(
+                          children: [
+                            /// НАКОПЛЕНО
+                            Expanded(
+                              child: AccumulatedWidget(
+                                leftFlex: 4,
+                                rightFlex: 2,
+                                leftBorderGradientColors: [Colors.red, Colors.white, Colors.red],
+                                cornerRadius: _sdp(40),
+                                leftFillGradientColors: [Colors.blue, Colors.blue],
+                                rightFillGradientColors: [AppColors.refGreenLight1, AppColors.refGreenDark2],
+                                rightFillColor: Colors.green.shade700,
+                                textValue: 'A1B2C3D4',
+                                height: _sdp(150),
+                                borderWidth: _sdp(2),
+                                onTapCopy: () {},
+                                onTapEdit: () {},
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
