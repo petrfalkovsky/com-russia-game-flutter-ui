@@ -10,7 +10,7 @@ import 'package:flutter_inner_shadow/flutter_inner_shadow.dart';
 
 class BalanceWidget extends StatelessWidget {
   final Widget? child;
-  final String? coinIconPath;
+  final String coinIconPath;
   final String? balanceValue;
   final double? height;
   final double? cornerRadius;
@@ -31,12 +31,12 @@ class BalanceWidget extends StatelessWidget {
   final List<Color>? fillGradientColorsRigth;
   final List<Color>? rightBorderGradientColors;
 
-  final bool isCurrencyView;
+  final bool isGreyView;
 
   const BalanceWidget({
     super.key,
     this.child,
-    this.coinIconPath,
+    this.coinIconPath = AppImages.refEdit,
     this.balanceValue,
     this.height,
     this.cornerRadius,
@@ -54,7 +54,7 @@ class BalanceWidget extends StatelessWidget {
     this.addIconPaddingRight,
     this.innerBlurRadius,
     this.outerBlurRadius,
-    this.isCurrencyView = false,
+    this.isGreyView = false,
   });
 
   @override
@@ -79,7 +79,7 @@ class BalanceWidget extends StatelessWidget {
 
     return Stack(
       children: [
-        if (isCurrencyView)
+        if (isGreyView)
           Positioned(
             right: sdpW(context, 10),
             child: Container(
@@ -101,7 +101,7 @@ class BalanceWidget extends StatelessWidget {
             ),
             shadows: [
               BoxShadow(
-                color: isCurrencyView
+                color: isGreyView
                     ? Colors.transparent
                     : Color.fromARGB(255, 112, 84, 45).withOpacity(.6),
                 blurRadius: outerBlurRadius ?? sdpW(context, 60),
@@ -110,10 +110,10 @@ class BalanceWidget extends StatelessWidget {
               ),
             ],
             gradient: LinearGradient(
-              begin: isCurrencyView ? Alignment.topLeft : Alignment.centerLeft,
-              end: isCurrencyView ? Alignment.bottomRight : Alignment.centerRight,
+              begin: isGreyView ? Alignment.topLeft : Alignment.centerLeft,
+              end: isGreyView ? Alignment.bottomRight : Alignment.centerRight,
               colors: fillColors,
-              stops: isCurrencyView ? [0.0, .2, 1.0] : [0.0, .8, 1.0],
+              stops: isGreyView ? [0.0, .2, 1.0] : [0.0, .8, 1.0],
             ),
           ),
           padding: effectivePadding,
@@ -149,7 +149,7 @@ class BalanceWidget extends StatelessWidget {
                           bottomRight: SmoothRadius.zero,
                         ),
                       ),
-                      gradient: isCurrencyView
+                      gradient: isGreyView
                           ? LinearGradient(
                               stops: [0.0, 0.15, 0.92, 1.0],
                               colors: [
@@ -160,14 +160,14 @@ class BalanceWidget extends StatelessWidget {
                               ],
                             )
                           : null,
-                      color: isCurrencyView ? null : AppColors.refBrown2,
+                      color: isGreyView ? null : AppColors.refBrown2,
                     ),
                     padding: textHorizontalPadding,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Image.asset(
-                          isCurrencyView ? AppImages.refMoney : AppImages.refCoins,
+                          isGreyView ? AppImages.refMoney : AppImages.refCoins,
                           width: effectiveIconSize,
                         ),
                         sdpW(context, 14).width,
@@ -184,10 +184,10 @@ class BalanceWidget extends StatelessWidget {
                         sdpW(context, 16).width,
                         Text(
                           textAlign: TextAlign.center,
-                          isCurrencyView ? context.locales.rub : context.locales.RC,
+                          isGreyView ? context.locales.rub : context.locales.RC,
                           style: AppFonts.fontHalvar50sdpW(
                             context,
-                            isCurrencyView ? AppColors.refGreen : AppColors.refYellowLight,
+                            isGreyView ? AppColors.refGreen : AppColors.refYellowLight,
                             FontWeight.w800,
                           ),
                         ),
@@ -235,17 +235,17 @@ class BalanceWidget extends StatelessWidget {
             child: Image.asset(
               AppImages.refAdd,
               width: effectiveIconSize * 0.666,
-              color: isCurrencyView ? AppColors.white.withOpacity(.5) : AppColors.black,
+              color: isGreyView ? AppColors.white.withOpacity(.5) : AppColors.black,
             ),
           ),
         );
 
-    if (!isCurrencyView) {
+    if (!isGreyView) {
       return SizedBox(height: double.maxFinite, child: contentWidget);
     }
 
     return Padding(
-      padding: EdgeInsets.all(sdpW(context, isCurrencyView ? 2 : 0)),
+      padding: EdgeInsets.all(sdpW(context, isGreyView ? 2 : 0)),
       child: CustomPaint(
         painter: _GradientBorderPainter(
           borderColors: rightBorderColors,

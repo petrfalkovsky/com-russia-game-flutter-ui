@@ -4,6 +4,7 @@ import 'package:com_russia_game_flutter_ui/core/theme/app_images.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/balance_widget.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/close_widget.dart';
+import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/promocode_widget.dart';
 import 'package:flutter/material.dart';
 
 class ReferralProgramScreen extends StatelessWidget {
@@ -36,7 +37,7 @@ class ReferralProgramScreen extends StatelessWidget {
                       /// БАЛАНС РУБ
                       BalanceWidget(
                         balanceValue: 190990.toString(),
-                        isCurrencyView: true,
+                        isGreyView: true,
                         height: _sdp(100),
                         cornerRadius: _sdp(30),
                         borderWidth: _sdp(2),
@@ -88,18 +89,67 @@ class ReferralProgramScreen extends StatelessWidget {
 
                   _sdp(67).height,
 
-                  /// ЭППБАР
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: CloseWidget(
-                      iconPath: AppImages.refShare,
-                      size: _sdp(150),
-                      fillGradientColors: [AppColors.refYellowLight1, AppColors.refYellowDark2],
-                      cornerRadius: _sdp(40),
-                      borderWidth: _sdp(0),
-                      iconSize: _sdp(60),
-                      iconColor: AppColors.black,
-                    ),
+                  /// КНОПКИ КОПИРОВАТЬ ПРОМОКОД, ПОДЕЛИТЬСЯ,
+                  Row(
+                    children: [
+                      /// ПРОМОКОД
+                      PromocodeWidget(
+                        textValue: 'A1B2C3D4',
+                        height: _sdp(150),
+                        addIconPaddingLeft: _sdp(48),
+                        addIconPaddingRight: _sdp(48),
+                        borderWidth: _sdp(2),
+                        borderGradientColors: [
+                          Colors.grey.withOpacity(.1),
+                          Colors.grey.withOpacity(.3),
+                          Colors.transparent,
+                        ],
+                        iconSize: _sdp(50),
+                        secondIconSize: _sdp(60),
+                        cornerRadius: _sdp(40),
+                        copyIconSize: _sdp(47),
+                        onTapCopy: () {},
+                        onTapEdit: () {},
+                      ),
+
+                      _sdp(38).width,
+
+                      CloseWidget(
+                        iconPath: AppImages.refShare,
+                        size: _sdp(150),
+                        fillGradientColors: [AppColors.refYellowLight1, AppColors.refYellowDark2],
+                        cornerRadius: _sdp(40),
+                        borderWidth: _sdp(0),
+                        iconSize: _sdp(60),
+                        iconColor: AppColors.black,
+                      ),
+                    ],
+                  ),
+
+                  _sdp(67).height,
+
+                  Row(
+                    children: [
+                      /// НАКОПЛЕНО
+                      PromocodeWidget(
+                        textValue: 'A1B2C3D4',
+                        height: _sdp(150),
+                        addIconPaddingLeft: _sdp(48),
+                        addIconPaddingRight: _sdp(48),
+                        borderWidth: _sdp(2),
+                        borderGradientColors: [
+                          Colors.grey.withOpacity(.1),
+                          Colors.grey.withOpacity(.3),
+                          Colors.transparent,
+                        ],
+                        iconSize: _sdp(50),
+                        secondIconSize: _sdp(60),
+                        cornerRadius: _sdp(40),
+                        copyIconSize: _sdp(47),
+                        onTapCopy: () {},
+                        onTapEdit: () {},
+                      ),
+                    ],
                   ),
                 ],
               ),

@@ -19,4 +19,10 @@ class AppColors {
   static const Color refGreen = Color(0xFFC6ED62);
   static const Color refBrown = Color(0xFF492E08);
   static const Color refBrown2 = Color(0xFF2C1D0C);
+  static const Color refGrey = Color(0xFF323639);
+  static const Color refGrey2 = Color(0xFF0B1013);
+
+  
+
+  
 }
