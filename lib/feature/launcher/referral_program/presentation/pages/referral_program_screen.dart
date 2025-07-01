@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
@@ -232,6 +234,74 @@ class ReferralProgramScreen extends StatelessWidget {
                           ],
                         ),
                       ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            /// ОСНОВНОЙ КОНТЕНТ СЛЕВА
+            // ПРОГРАММА
+            Positioned(
+              top: _sdp(66),
+              left: _sdp(467),
+              child: Transform.rotate(
+                angle: 3.16 * math.pi / 180,
+                child: Container(
+                  height: _sdp(60),
+                  width: _sdp(299),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(_sdp(100)),
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomLeft,
+                      end: Alignment.topRight,
+                      colors: [AppColors.refYellowLight, AppColors.refYellowDark],
+                      stops: [0.5, 0.99],
+                    ),
+                  ),
+                  child: Center(
+                    // искажение
+                    child: Transform.scale(
+                      scaleX: 1.9, // по горизонтали
+                      scaleY: 1.1, // по вертикали
+                      child: Text(
+                        context.locales.ref_program.toUpperCase(),
+                        style:
+                            AppFonts.fontAkrobat32sdpW(
+                              context,
+                              AppColors.refBrown,
+                              FontWeight.w800,
+                            ).copyWith(
+                              letterSpacing: -.3,
+                              height: sdpW(context, 38) / sdpW(context, 32),
+                            ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            // РЕФЕРАЛЬНАЯ, ОПИСАНИЕ
+            Positioned(
+              top: _sdp(96),
+              left: _sdp(92),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    context.locales.ref_referral.toUpperCase(),
+                    style: AppFonts.fontAkrobat120sdpW(context, AppColors.white, FontWeight.w900),
+                  ),
+
+                  _sdp(36).height,
+
+                  Text(
+                    context.locales.ref_description,
+                    style: AppFonts.fontHalvar36sdpW(
+                      context,
+                      AppColors.white.withOpacity(.6),
+                      FontWeight.w300,
                     ),
                   ),
                 ],
