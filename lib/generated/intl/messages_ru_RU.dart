@@ -29,7 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ref_description": MessageLookupByLibrary.simpleMessage(
             "Приглашай друзей, чтобы играть и развиваться на сервере вместе!\nПриведенный реферал засчитывается, когда он набрал 3-й игровой уровень"),
         "ref_donate_procent":
-            MessageLookupByLibrary.simpleMessage("% от доната"),
+            MessageLookupByLibrary.simpleMessage("%d% от доната"),
         "ref_get": MessageLookupByLibrary.simpleMessage("Получить"),
         "ref_max_upgraded":
             MessageLookupByLibrary.simpleMessage("Улучшено на макс."),

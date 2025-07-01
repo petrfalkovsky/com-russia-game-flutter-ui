@@ -120,10 +120,10 @@ class S {
     );
   }
 
-  /// `% от доната`
+  /// `%d% от доната`
   String get ref_donate_procent {
     return Intl.message(
-      '% от доната',
+      '%d% от доната',
       name: 'ref_donate_procent',
       desc: '',
       args: [],

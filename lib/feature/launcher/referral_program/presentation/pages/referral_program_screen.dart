@@ -1,10 +1,13 @@
+import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_images.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/accumulated_widget.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/balance_widget.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/close_widget.dart';
+import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/improve_widget.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/promocode_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -137,7 +140,59 @@ class ReferralProgramScreen extends StatelessWidget {
                           ],
                         ),
 
-                        _sdp(67).height,
+                        _sdp(48).height,
+                        // % ОТ ДОНАТА
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            // % ОТ ДОНАТА, приведенных рефералов
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  context.locales.ref_donate_procent
+                                      .replaceAll('%d', '1')
+                                      .toLowerCase(),
+                                  style: AppFonts.fontHalvar50sdpW(
+                                    context,
+                                    AppColors.white,
+                                    FontWeight.w800,
+                                  ),
+                                ),
+
+                                _sdp(16).height,
+
+                                Text(
+                                  context.locales.ref_referrers
+                                      .replaceAll('%d', '25')
+                                      .toLowerCase(),
+                                  style: AppFonts.fontHalvar30sdpW(
+                                    context,
+                                    AppColors.white.withOpacity(.7),
+                                    FontWeight.w800,
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            // КНОПКА УЛУЧШИТЬ
+                            ImproveWidget(
+                              // функционал
+                              onTap: () {},
+                              upgradePercent: 25,
+                              isUpgraded: true,
+
+                              // св-ва
+                              height: _sdp(100),
+                              width: _sdp(505),
+                              cornerRadius: _sdp(30),
+                              iconSize: _sdp(40),
+                              spacing: _sdp(30),
+                            ),
+                          ],
+                        ),
+
+                        _sdp(48).height,
 
                         /// НАКОПЛЕНО
                         Row(
@@ -152,6 +207,10 @@ class ReferralProgramScreen extends StatelessWidget {
                                 // стильи виджета
                                 leftFlex: 4,
                                 rightFlex: 2,
+                                height: _sdp(150),
+                                borderWidth: _sdp(2),
+                                leadIconPath: AppImages.refCoins,
+                                leadIconSize: _sdp(60),
                                 leftBorderGradientColors: [
                                   AppColors.refGrey2,
                                   AppColors.white.withOpacity(.1),
@@ -168,10 +227,6 @@ class ReferralProgramScreen extends StatelessWidget {
                                   AppColors.refGreenLight1,
                                   AppColors.refGreenDark2,
                                 ],
-                                height: _sdp(150),
-                                borderWidth: _sdp(2),
-                                leadIconPath: AppImages.refCoins,
-                                leadIconSize: _sdp(60),
                               ),
                             ),
                           ],
