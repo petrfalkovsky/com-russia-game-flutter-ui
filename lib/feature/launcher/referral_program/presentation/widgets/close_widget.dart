@@ -10,13 +10,13 @@ class CloseWidget extends StatelessWidget {
   final double? size;
   final double? cornerRadius;
 
-  // cглаживание скруглений (0.0–1.0)
   final double? cornerSmoothing;
   final double? borderWidth;
   final double? iconSize;
   final EdgeInsets? iconPadding;
   final List<Color>? borderGradientColors;
   final List<Color>? fillGradientColors;
+  final Color? iconColor;
 
   const CloseWidget({
     super.key,
@@ -30,6 +30,7 @@ class CloseWidget extends StatelessWidget {
     this.iconPadding,
     this.borderGradientColors,
     this.fillGradientColors,
+    this.iconColor,
   });
 
   @override
@@ -89,7 +90,7 @@ class CloseWidget extends StatelessWidget {
                 child: Image.asset(
                   iconPath ?? AppImages.refClose,
                   width: effectiveIconSize,
-                  color: AppColors.white.withOpacity(.7),
+                  color: iconColor ?? AppColors.white.withOpacity(.7),
                 ),
               ),
         ),
