@@ -51,6 +51,7 @@ class HorizontalCardsList extends StatelessWidget {
       height: cardSize,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
+        clipBehavior: Clip.none,
         child: Row(
           children: [
             // первый овал слева от всех карточек
@@ -100,6 +101,20 @@ class HorizontalCardsList extends StatelessWidget {
               ],
               stops: [0.0, 0.6, 1.0],
             ),
+            shadows: [
+              BoxShadow(
+                color: AppColors.white.withOpacity(0.01),
+                blurRadius: sdpW(context, 40),
+                spreadRadius: sdpW(context, 1),
+                offset: Offset(0, 0),
+              ),
+              BoxShadow(
+                color: AppColors.white.withOpacity(0.01),
+                blurRadius: sdpW(context, 60),
+                spreadRadius: sdpW(context, 20),
+                offset: Offset(0, 0),
+              ),
+            ],
           ),
           child: Container(
             margin: EdgeInsets.all(borderWidth),
