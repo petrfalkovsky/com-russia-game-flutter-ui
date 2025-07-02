@@ -9,6 +9,7 @@ import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/accumulated_widget.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/balance_widget.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/close_widget.dart';
+import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/horizontal_cardlist.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/improve_widget.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/promocode_widget.dart';
 import 'package:flutter/material.dart';
@@ -305,6 +306,101 @@ class ReferralProgramScreen extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                height: _sdp(290),
+                decoration: BoxDecoration(
+                  // градиентный бордер только сверху
+                  border: Border(
+                    top: BorderSide(width: _sdp(2), color: Colors.transparent),
+                  ),
+
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [AppColors.white.withOpacity(0.3), Colors.transparent],
+                    stops: [0.0, 0.02],
+                  ),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    // темный фон полупрозрачный
+                    color: AppColors.refGrey2.withOpacity(0.85),
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      // белый градиент поверх темного фона
+                      gradient: RadialGradient(
+                        radius: 6,
+                        colors: [Colors.white.withOpacity(.05), Colors.white.withOpacity(0.0)],
+                        stops: [0.0, 1.0],
+                      ),
+                    ),
+
+                    child: Padding(
+                      padding: EdgeInsets.only(left: _sdp(91)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            textAlign: TextAlign.center,
+                            context.locales.ref_you_invite,
+                            style: AppFonts.fontHalvar50sdpW(
+                              context,
+                              AppColors.white,
+                              FontWeight.w800,
+                            ),
+                          ),
+
+                          _sdp(8).height,
+
+                          Text(
+                            textAlign: TextAlign.center,
+                            '10 ${context.locales.ref_persons.toUpperCase()}',
+                            style: AppFonts.fontHalvar70sdpW(
+                              context,
+                              AppColors.refYellowLight,
+                              FontWeight.w900,
+                            ).copyWith(fontStyle: FontStyle.italic),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            Positioned(
+              bottom: _sdp(29),
+              left: _sdp(444),
+              width: MediaQuery.of(context).size.width,
+              child: HorizontalCardsList(
+                // мок
+                isClaimVisible: (index) => index % 3 == 0,
+                isDoneVisible: (index) => index % 5 == 0,
+                isOvalActive: (index) => index % 2 == 0,
+
+                // мок список уровней для овалов
+                ovalLevels: [1, 3, 5, 7, 15, 21, 25, 30, 35, 40, 50, 60, 70, 80, 90, 100],
+
+                // св-ва
+                itemCount: 10,
+                cardSize: _sdp(230),
+                cardSpacing: _sdp(140),
+                lineHeight: _sdp(11),
+                ovalWidth: _sdp(110),
+                ovalHeight: _sdp(61),
+                borderWidth: _sdp(1),
+                borderRadius: _sdp(40),
+                buttonHeight: _sdp(66),
+                buttonText: context.locales.ref_get,
               ),
             ),
           ],
