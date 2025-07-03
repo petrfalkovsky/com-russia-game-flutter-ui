@@ -113,7 +113,7 @@ class ImproveWidget extends StatelessWidget {
               : context.locales.ref_upgrade
                     .replaceAll('%d', upgradePercent.toString())
                     .toUpperCase(),
-          style: AppFonts.fontHalvar40sdpW(context, AppColors.white, FontWeight.w800),
+          style: AppFonts.fontAkrobat40sdpW(context, AppColors.white, FontWeight.w700),
         ),
       ],
     );

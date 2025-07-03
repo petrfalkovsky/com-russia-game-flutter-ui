@@ -175,20 +175,20 @@ class BalanceWidget extends StatelessWidget {
                         Text(
                           textAlign: TextAlign.center,
                           balanceValue ?? '0',
-                          style: AppFonts.fontHalvar50sdpW(
+                          style: AppFonts.fontAkrobat50sdpW(
                             context,
                             AppColors.white,
-                            FontWeight.w900,
+                            FontWeight.w700,
                           ),
                         ),
                         sdpW(context, 16).width,
                         Text(
                           textAlign: TextAlign.center,
                           isGreyView ? context.locales.rub : context.locales.RC,
-                          style: AppFonts.fontHalvar50sdpW(
+                          style: AppFonts.fontAkrobat50sdpW(
                             context,
                             isGreyView ? AppColors.refGreen : AppColors.refYellowLight,
-                            FontWeight.w800,
+                            FontWeight.w700,
                           ),
                         ),
                       ],

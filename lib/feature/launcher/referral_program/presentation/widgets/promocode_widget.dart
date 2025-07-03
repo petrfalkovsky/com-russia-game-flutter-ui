@@ -132,7 +132,7 @@ class PromocodeWidget extends StatelessWidget {
                             Text(
                               textAlign: TextAlign.center,
                               context.locales.ref_your_turn,
-                              style: AppFonts.fontHalvar30sdpW(
+                              style: AppFonts.fontAkrobat30sdpW(
                                 context,
                                 AppColors.white.withOpacity(.5),
                                 FontWeight.w400,
@@ -148,10 +148,10 @@ class PromocodeWidget extends StatelessWidget {
                             Text(
                               textAlign: TextAlign.center,
                               textValue.toString(),
-                              style: AppFonts.fontHalvar50sdpW(
+                              style: AppFonts.fontAkrobat50sdpW(
                                 context,
                                 AppColors.white,
-                                FontWeight.w800,
+                                FontWeight.w700,
                               ),
                             ),
                             sdpW(context, 92).width,

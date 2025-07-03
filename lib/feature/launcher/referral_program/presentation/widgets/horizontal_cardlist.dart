@@ -164,10 +164,10 @@ class HorizontalCardsList extends StatelessWidget {
                       child: Center(
                         child: Text(
                           buttonText.toUpperCase(),
-                          style: AppFonts.fontHalvar40sdpW(
+                          style: AppFonts.fontAkrobat40sdpW(
                             context,
                             AppColors.black,
-                            FontWeight.w800,
+                            FontWeight.w700,
                           ),
                         ),
                       ),
@@ -272,7 +272,7 @@ class HorizontalCardsList extends StatelessWidget {
                   style: AppFonts.fontAkrobat36sdpW(
                     context,
                     isActive ? AppColors.black : AppColors.white.withOpacity(.2),
-                    FontWeight.w800,
+                    FontWeight.w700,
                   ),
                 ),
               ),

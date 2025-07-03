@@ -189,7 +189,7 @@ class AccumulatedWidget extends StatelessWidget {
                     children: [
                       Text(
                         context.locales.ref_accumulated,
-                        style: AppFonts.fontHalvar30sdpW(
+                        style: AppFonts.fontAkrobat30sdpW(
                           context,
                           AppColors.white.withOpacity(.5),
                           FontWeight.w400,
@@ -206,18 +206,18 @@ class AccumulatedWidget extends StatelessWidget {
                                 children: [
                                   TextSpan(
                                     text: textValue.toString(),
-                                    style: AppFonts.fontHalvar50sdpW(
+                                    style: AppFonts.fontAkrobat50sdpW(
                                       context,
                                       AppColors.white,
-                                      FontWeight.w800,
+                                      FontWeight.w700,
                                     ),
                                   ),
                                   TextSpan(
                                     text: ' ${context.locales.RC}',
-                                    style: AppFonts.fontHalvar50sdpW(
+                                    style: AppFonts.fontAkrobat50sdpW(
                                       context,
                                       AppColors.refYellowLight,
-                                      FontWeight.w800,
+                                      FontWeight.w700,
                                     ),
                                   ),
                                 ],
@@ -328,7 +328,7 @@ class AccumulatedWidget extends StatelessWidget {
                       ),
                       child: Text(
                         context.locales.ref_claim.toUpperCase(),
-                        style: AppFonts.fontHalvar50sdpW(context, AppColors.black, FontWeight.w900),
+                        style: AppFonts.fontAkrobat50sdpW(context, AppColors.black, FontWeight.w700),
                       ),
                     ),
                   ),

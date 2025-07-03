@@ -156,10 +156,10 @@ class ReferralProgramScreen extends StatelessWidget {
                                   context.locales.ref_donate_procent
                                       .replaceAll('%d', '1')
                                       .toLowerCase(),
-                                  style: AppFonts.fontHalvar50sdpW(
+                                  style: AppFonts.fontAkrobat50sdpW(
                                     context,
                                     AppColors.white,
-                                    FontWeight.w800,
+                                    FontWeight.w700,
                                   ),
                                 ),
 
@@ -169,10 +169,10 @@ class ReferralProgramScreen extends StatelessWidget {
                                   context.locales.ref_referrers
                                       .replaceAll('%d', '25')
                                       .toLowerCase(),
-                                  style: AppFonts.fontHalvar30sdpW(
+                                  style: AppFonts.fontAkrobat30sdpW(
                                     context,
                                     AppColors.white.withOpacity(.7),
-                                    FontWeight.w800,
+                                    FontWeight.w700,
                                   ),
                                 ),
                               ],
@@ -271,7 +271,7 @@ class ReferralProgramScreen extends StatelessWidget {
                             AppFonts.fontAkrobat32sdpW(
                               context,
                               AppColors.refBrown,
-                              FontWeight.w800,
+                              FontWeight.w700,
                             ).copyWith(
                               letterSpacing: -.3,
                               height: sdpW(context, 38) / sdpW(context, 32),
@@ -299,7 +299,7 @@ class ReferralProgramScreen extends StatelessWidget {
 
                   Text(
                     context.locales.ref_description,
-                    style: AppFonts.fontHalvar36sdpW(
+                    style: AppFonts.fontAkrobat36sdpW(
                       context,
                       AppColors.white.withOpacity(.6),
                       FontWeight.w300,
@@ -351,10 +351,10 @@ class ReferralProgramScreen extends StatelessWidget {
                           Text(
                             textAlign: TextAlign.center,
                             context.locales.ref_you_invite,
-                            style: AppFonts.fontHalvar50sdpW(
+                            style: AppFonts.fontAkrobat50sdpW(
                               context,
                               AppColors.white,
-                              FontWeight.w800,
+                              FontWeight.w700,
                             ),
                           ),
 
@@ -363,10 +363,10 @@ class ReferralProgramScreen extends StatelessWidget {
                           Text(
                             textAlign: TextAlign.center,
                             '10 ${context.locales.ref_persons.toUpperCase()}',
-                            style: AppFonts.fontHalvar70sdpW(
+                            style: AppFonts.fontAkrobat70sdpW(
                               context,
                               AppColors.refYellowLight,
-                              FontWeight.w900,
+                              FontWeight.w800,
                             ).copyWith(fontStyle: FontStyle.italic),
                           ),
                         ],
