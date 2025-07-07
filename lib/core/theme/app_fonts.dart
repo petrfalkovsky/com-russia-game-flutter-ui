@@ -3,7 +3,7 @@ import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 
 abstract class AppFonts {
   static const fontAkrobat = 'Akrobat';
-  static const fontHalvar = 'Halvar Engschrift';
+  static const fontHalvar = 'Halvar';
 
   /// Base text styles
   static TextStyle baseAkrobat(

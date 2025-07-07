@@ -249,7 +249,7 @@ class HorizontalCardsList extends StatelessWidget {
                           style: AppFonts.fontAkrobat40sdpW(
                             context,
                             AppColors.black,
-                            FontWeight.w700,
+                            FontWeight.w500,
                           ),
                         ),
                       ),

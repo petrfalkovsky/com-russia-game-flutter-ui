@@ -159,7 +159,7 @@ class ReferralProgramScreen extends StatelessWidget {
                                   style: AppFonts.fontAkrobat50sdpW(
                                     context,
                                     AppColors.white,
-                                    FontWeight.w700,
+                                    FontWeight.w500,
                                   ),
                                 ),
 
@@ -172,7 +172,7 @@ class ReferralProgramScreen extends StatelessWidget {
                                   style: AppFonts.fontAkrobat30sdpW(
                                     context,
                                     AppColors.white.withOpacity(.7),
-                                    FontWeight.w700,
+                                    FontWeight.w500,
                                   ),
                                 ),
                               ],
@@ -354,7 +354,7 @@ class ReferralProgramScreen extends StatelessWidget {
                             style: AppFonts.fontAkrobat50sdpW(
                               context,
                               AppColors.white,
-                              FontWeight.w700,
+                              FontWeight.w500,
                             ),
                           ),
 

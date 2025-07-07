@@ -151,7 +151,7 @@ class PromocodeWidget extends StatelessWidget {
                               style: AppFonts.fontAkrobat50sdpW(
                                 context,
                                 AppColors.white,
-                                FontWeight.w700,
+                                FontWeight.w500,
                               ),
                             ),
                             sdpW(context, 92).width,

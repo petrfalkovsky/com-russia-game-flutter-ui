@@ -78,17 +78,22 @@ flutter:
     - assets/webp/launcher/referral_program/
 
   fonts:
-    - family: Halvar Engschrift
+    - family: Halvar
       fonts:
-        - asset: assets/font/HalvarEng-X-Bd-Slanted.ttf
+        # Extra Bold Slanted (наклон)
+        - asset: assets/font/halvar/Halvar_Eng_CY_XBd_SuSlant.otf
           weight: 800
-        - asset: assets/font/HalvarEng-Bd.ttf
+        # Bold
+        - asset: assets/font/halvar/Halvar_Eng_CY_XBd.otf
           weight: 700
-        - asset: assets/font/HalvarEng-Bd-Slanted.ttf
+        # Bold Slanted (наклон)
+        - asset: assets/font/halvar/HalvarEng_Bd_Slanted.ttf
           weight: 600
-        - asset: assets/font/HalvarEng-Md.ttf
+        # Medium
+        - asset: assets/font/halvar/Halvar_Eng_CY_Md.otf
           weight: 500
-        - asset: assets/font/HalvarEng-Rg.ttf
+        # Regular
+        - asset: assets/font/halvar/Halvar_Eng_CY_Rg.otf
           weight: 400
     - family: St Nizhegorodsky
       fonts:
