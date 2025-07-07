@@ -1,3 +1,5 @@
+import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dart';
+import 'package:com_russia_game_flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_images.dart';
@@ -23,6 +25,8 @@ class HorizontalCardsList extends StatelessWidget {
   final bool Function(int index)? isDoneVisible;
   final bool Function(int index)? isOvalActive;
   final List<int> ovalLevels;
+  final double containerHeight;
+  final int invitedCount;
 
   const HorizontalCardsList({
     super.key,
@@ -30,6 +34,8 @@ class HorizontalCardsList extends StatelessWidget {
     required this.cardSpacing,
     required this.itemCount,
     required this.ovalLevels,
+    required this.containerHeight,
+    required this.invitedCount,
     this.lineHeight = 2.0,
     this.ovalWidth = 60.0,
     this.ovalHeight = 20.0,
@@ -46,31 +52,111 @@ class HorizontalCardsList extends StatelessWidget {
   });
 
   @override
+  @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: cardSize,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        clipBehavior: Clip.none,
-        child: Row(
-          children: [
-            // первый овал слева от всех карточек
-            _buildFirstOval(context),
+    _sdp(double value) => sdpW(context, value) * 1.08;
 
-            // карточки и овалы между ними
-            ...List.generate(itemCount * 2 - 1, (index) {
-              if (index.isEven) {
-                // карточка
-                final cardIndex = index ~/ 2;
-                return _buildCard(context, cardIndex);
-              } else {
-                // овал между карточками
-                final ovalIndex = (index ~/ 2) + 1;
-                return _buildOvalWithLine(context, ovalIndex);
-              }
-            }),
-          ],
-        ),
+    return SizedBox(
+      height: containerHeight,
+      child: Stack(
+        children: [
+          // фон с градиентным бордером
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: containerHeight,
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(width: _sdp(2), color: Colors.transparent),
+                ),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [AppColors.white.withOpacity(0.3), Colors.transparent],
+                  stops: [0.0, 0.02],
+                ),
+              ),
+              child: Container(
+                decoration: BoxDecoration(color: AppColors.refGrey2.withOpacity(0.85)),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: RadialGradient(
+                      radius: 6,
+                      colors: [Colors.white.withOpacity(.05), Colors.white.withOpacity(0.0)],
+                      stops: [0.0, 1.0],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          // текст слева
+          Positioned(
+            bottom: 0,
+            left: _sdp(91),
+            child: Container(
+              height: containerHeight,
+              width: _sdp(353),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    context.locales.ref_you_invite,
+                    style: AppFonts.fontAkrobat50sdpW(context, AppColors.white, FontWeight.w700),
+                  ),
+                  _sdp(8).height,
+                  Text(
+                    '$invitedCount ${context.locales.ref_persons.toUpperCase()}',
+                    style: AppFonts.fontAkrobat70sdpW(
+                      context,
+                      AppColors.refYellowLight,
+                      FontWeight.w800,
+                    ).copyWith(fontStyle: FontStyle.italic),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          // список
+          Positioned(
+            bottom: _sdp(29),
+            left: _sdp(444),
+            right: 0,
+            child: ClipRect(
+              child: SizedBox(
+                height: cardSize,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  clipBehavior: Clip.hardEdge, // обрезка
+                  child: Row(
+                    children: [
+                      // первый овал слева от всех карточек
+                      _buildFirstOval(context),
+
+                      // карточки и овалы между ними
+                      ...List.generate(itemCount * 2 - 1, (index) {
+                        if (index.isEven) {
+                          // карточка
+                          final cardIndex = index ~/ 2;
+                          return _buildCard(context, cardIndex);
+                        } else {
+                          // овал между карточками
+                          final ovalIndex = (index ~/ 2) + 1;
+                          return _buildOvalWithLine(context, ovalIndex);
+                        }
+                      }),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -90,7 +176,6 @@ class HorizontalCardsList extends StatelessWidget {
                 SmoothRadius(cornerRadius: borderRadius, cornerSmoothing: 1),
               ),
             ),
-
             gradient: RadialGradient(
               center: Alignment.center,
               radius: 1.0,
@@ -128,10 +213,7 @@ class HorizontalCardsList extends StatelessWidget {
             ),
             child: Stack(
               children: [
-                // типа контент карточки можно вставить
                 cardBuilder?.call(index) ?? Container(),
-
-                // плашка получить
                 if (showClaim)
                   Positioned(
                     bottom: 0,
@@ -177,8 +259,6 @@ class HorizontalCardsList extends StatelessWidget {
             ),
           ),
         ),
-
-        // ИКОНКА DONE
         if (showDone)
           Positioned(
             top: sdpW(context, 18),
@@ -189,7 +269,6 @@ class HorizontalCardsList extends StatelessWidget {
     );
   }
 
-  // первый овал слева с линией, смещенной вправо
   Widget _buildFirstOval(context) {
     final isActive = isOvalActive?.call(0) ?? false;
     final level = ovalLevels.isNotEmpty ? ovalLevels[0] : 1;
@@ -199,7 +278,6 @@ class HorizontalCardsList extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          // линия под овалом, смещенная вправо
           Positioned(
             child: Transform.translate(
               offset: Offset(ovalWidth * 0.25, 0),
@@ -210,8 +288,6 @@ class HorizontalCardsList extends StatelessWidget {
               ),
             ),
           ),
-
-          // овальный контейнер поверх линии
           Container(
             width: ovalWidth,
             height: ovalHeight,
@@ -247,7 +323,6 @@ class HorizontalCardsList extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          // линия под овалом
           Positioned(
             child: Container(
               width: ovalWidth * 1.5,
@@ -255,8 +330,6 @@ class HorizontalCardsList extends StatelessWidget {
               color: isActive ? AppColors.refYellowLight1 : AppColors.refGrey,
             ),
           ),
-
-          // овальный контейнер поверх линии
           Container(
             width: ovalWidth,
             height: ovalHeight,

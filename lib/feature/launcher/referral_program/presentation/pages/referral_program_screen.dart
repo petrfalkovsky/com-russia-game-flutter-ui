@@ -378,9 +378,9 @@ class ReferralProgramScreen extends StatelessWidget {
             ),
 
             Positioned(
-              bottom: _sdp(29),
-              left: _sdp(444),
-              width: MediaQuery.of(context).size.width,
+              bottom: 0,
+              left: 0,
+              right: 0,
               child: HorizontalCardsList(
                 // мок
                 isClaimVisible: (index) => index % 3 == 0,
@@ -401,6 +401,8 @@ class ReferralProgramScreen extends StatelessWidget {
                 borderRadius: _sdp(40),
                 buttonHeight: _sdp(66),
                 buttonText: context.locales.ref_get,
+                containerHeight: _sdp(290),
+                invitedCount: 10,
               ),
             ),
           ],
