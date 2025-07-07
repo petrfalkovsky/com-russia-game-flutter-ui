@@ -167,7 +167,7 @@ class HorizontalCardsList extends StatelessWidget {
                           style: AppFonts.fontHalvar40sdpW(
                             context,
                             AppColors.black,
-                            FontWeight.w800,
+                            FontWeight.w500,
                           ),
                         ),
                       ),

@@ -13,4 +13,5 @@ class AppImages {
   static const String refLink = '$_referralProgram/ref_link.webp';
   static const String refMoney = '$_referralProgram/ref_money.webp';
   static const String refShare = '$_referralProgram/ref_share.webp';
+  static const String refRub = '$_referralProgram/ref_rub.webp';
 }

@@ -178,19 +178,26 @@ class BalanceWidget extends StatelessWidget {
                           style: AppFonts.fontHalvar50sdpW(
                             context,
                             AppColors.white,
-                            FontWeight.w900,
+                            FontWeight.w500,
                           ),
                         ),
                         sdpW(context, 16).width,
                         Text(
                           textAlign: TextAlign.center,
-                          isGreyView ? context.locales.rub : context.locales.RC,
+                          isGreyView ? '' : context.locales.RC,
                           style: AppFonts.fontHalvar50sdpW(
                             context,
                             isGreyView ? AppColors.refGreen : AppColors.refYellowLight,
-                            FontWeight.w800,
+                            FontWeight.w500,
                           ),
                         ),
+
+                        if (isGreyView)
+                          Image.asset(
+                            AppImages.refRub,
+                            width: effectiveIconSize * 0.416,
+                            color: AppColors.refGreen,
+                          ),
                       ],
                     ),
                   ),

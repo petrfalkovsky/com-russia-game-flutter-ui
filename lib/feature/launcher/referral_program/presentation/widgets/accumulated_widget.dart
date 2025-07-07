@@ -209,7 +209,7 @@ class AccumulatedWidget extends StatelessWidget {
                                     style: AppFonts.fontHalvar50sdpW(
                                       context,
                                       AppColors.white,
-                                      FontWeight.w800,
+                                      FontWeight.w500,
                                     ),
                                   ),
                                   TextSpan(
@@ -217,7 +217,7 @@ class AccumulatedWidget extends StatelessWidget {
                                     style: AppFonts.fontHalvar50sdpW(
                                       context,
                                       AppColors.refYellowLight,
-                                      FontWeight.w800,
+                                      FontWeight.w500,
                                     ),
                                   ),
                                 ],
@@ -328,7 +328,7 @@ class AccumulatedWidget extends StatelessWidget {
                       ),
                       child: Text(
                         context.locales.ref_claim.toUpperCase(),
-                        style: AppFonts.fontHalvar50sdpW(context, AppColors.black, FontWeight.w900),
+                        style: AppFonts.fontHalvar50sdpW(context, AppColors.black, FontWeight.w500),
                       ),
                     ),
                   ),
