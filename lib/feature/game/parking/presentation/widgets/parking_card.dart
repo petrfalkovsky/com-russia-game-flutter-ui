@@ -17,6 +17,7 @@ class ParkingCard extends StatelessWidget {
   final List<Color>? fillGradientColors;
   final EdgeInsetsGeometry? padding;
   final BoxFit? backgroundFit;
+  final bool transparentFill;
 
   const ParkingCard({
     super.key,
@@ -32,6 +33,7 @@ class ParkingCard extends StatelessWidget {
     this.fillGradientColors,
     this.padding,
     this.backgroundFit,
+    this.transparentFill = false,
   });
 
   @override
@@ -45,55 +47,130 @@ class ParkingCard extends StatelessWidget {
     final List<Color> borderColors =
         borderGradientColors ??
         [
-          AppColors.white.withOpacity(.5),
+          AppColors.white.withOpacity(.3),
           AppColors.white.withOpacity(.0),
           AppColors.white.withOpacity(.3),
         ];
 
     final List<Color> fillColors =
-        fillGradientColors ?? [Color(0xFF404040), Color(0xFF303030), Color(0xFF404040)];
+        fillGradientColors ??
+        //  [Color(0xFF404040), Color(0xFF303030), Color(0xFF404040)];
+        [
+          AppColors.white.withOpacity(.0),
+          AppColors.white.withOpacity(.0),
+          AppColors.white.withOpacity(.0),
+        ];
 
     return TapAnimation(
       child: Container(
         width: effectiveWidth,
         height: effectiveHeight,
-        decoration: ShapeDecoration(
-          shape: SmoothRectangleBorder(
-            borderRadius: SmoothBorderRadius(cornerRadius: radius, cornerSmoothing: smoothing),
-          ),
-          gradient: RadialGradient(radius: 2.0, colors: borderColors, stops: [0.0, 0.55, 1.0]),
-        ),
-        child: Container(
-          margin: EdgeInsets.all(effectiveBorderWidth),
-          child: ClipSmoothRect(
-            radius: SmoothBorderRadius(
-              cornerRadius: radius - effectiveBorderWidth,
-              cornerSmoothing: smoothing,
-            ),
-            child: Container(
+        child: Stack(
+          children: [
+            // Основной контейнер с градиентом
+            Container(
               decoration: ShapeDecoration(
                 shape: SmoothRectangleBorder(
                   borderRadius: SmoothBorderRadius(
-                    cornerRadius: radius - effectiveBorderWidth,
+                    cornerRadius: radius,
                     cornerSmoothing: smoothing,
                   ),
                 ),
-                gradient: RadialGradient(stops: [0.0, 0.55, 2.0], radius: 2.0, colors: fillColors),
-              ),
-              child: Stack(
-                children: [
-                  if (backgroundSvgPath != null)
-                    Positioned.fill(
-                      child: SvgPicture.asset(
-                        backgroundSvgPath!,
-                        fit: backgroundFit ?? BoxFit.cover,
-                      ),
-                    ),
-                  Container(padding: padding ?? EdgeInsets.all(8.0), child: child),
-                ],
+                gradient: RadialGradient(
+                  radius: 2.0,
+                  colors: borderColors,
+                  stops: [0.0, 0.55, 1.0],
+                ),
               ),
             ),
-          ),
+
+            // Маска для создания "дырки"
+            // if (transparentFill)
+            Container(
+              margin: EdgeInsets.all(effectiveBorderWidth),
+              child: ClipSmoothRect(
+                radius: SmoothBorderRadius(
+                  cornerRadius: radius - effectiveBorderWidth,
+                  cornerSmoothing: smoothing,
+                ),
+                child: Container(
+                  decoration: ShapeDecoration(
+                    shape: SmoothRectangleBorder(
+                      borderRadius: SmoothBorderRadius(
+                        cornerRadius: radius - effectiveBorderWidth,
+                        cornerSmoothing: smoothing,
+                      ),
+                    ),
+                    color: Colors.transparent,
+                  ),
+                  child: ColorFiltered(
+                    colorFilter: ColorFilter.mode(Colors.transparent, BlendMode.dstOut),
+                    child: Container(
+                      decoration: ShapeDecoration(
+                        shape: SmoothRectangleBorder(
+                          borderRadius: SmoothBorderRadius(
+                            cornerRadius: radius - effectiveBorderWidth,
+                            cornerSmoothing: smoothing,
+                          ),
+                        ),
+                        color: Colors.transparent,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            // Обычный заполненный контейнер
+            if (!transparentFill)
+              Container(
+                margin: EdgeInsets.all(effectiveBorderWidth),
+                child: ClipSmoothRect(
+                  radius: SmoothBorderRadius(
+                    cornerRadius: radius - effectiveBorderWidth,
+                    cornerSmoothing: smoothing,
+                  ),
+                  child: Container(
+                    decoration: ShapeDecoration(
+                      shape: SmoothRectangleBorder(
+                        borderRadius: SmoothBorderRadius(
+                          cornerRadius: radius - effectiveBorderWidth,
+                          cornerSmoothing: smoothing,
+                        ),
+                      ),
+                      gradient: RadialGradient(
+                        stops: [0.0, 0.55, 2.0],
+                        radius: 2.0,
+                        colors: fillColors,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+            // Контент
+            Container(
+              margin: EdgeInsets.all(effectiveBorderWidth),
+              child: ClipSmoothRect(
+                radius: SmoothBorderRadius(
+                  cornerRadius: radius - effectiveBorderWidth,
+                  cornerSmoothing: smoothing,
+                ),
+                child: Stack(
+                  children: [
+                    if (backgroundSvgPath != null)
+                      Positioned.fill(
+                        child: SvgPicture.asset(
+                          backgroundSvgPath!,
+                          fit: backgroundFit ?? BoxFit.cover,
+                        ),
+                      ),
+                    Container(padding: padding ?? EdgeInsets.all(8.0), child: child),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

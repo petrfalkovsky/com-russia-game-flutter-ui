@@ -1,6 +1,7 @@
+import 'package:com_russia_game_flutter_ui/core/shared_widgets/squirqle_gradient_border.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_vectors.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
-import 'package:com_russia_game_flutter_ui/feature/game/parking/presentation/widgets/parking_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -19,15 +20,24 @@ class ParkingScreen extends StatelessWidget {
           children: [
             Row(),
             Column(),
+
             /// ФОН
             Positioned.fill(child: SvgPicture.asset(AppVectors.parkingBg, fit: BoxFit.cover)),
 
-            /// ОСНОВНОЙ КОНТЕНТ
-            ParkingCard(
+            SquirqleGradientBorder(
               width: _sdp(573),
               height: _sdp(816),
-              cornerRadius: _sdp(30),
               borderWidth: _sdp(2),
+              cornerRadius: _sdp(40),
+              cornerSmoothing: 1.0,
+              borderGradientColors: [Colors.white.withOpacity(.45), Colors.white.withOpacity(.0)],
+              borderGradientStops: [0.0, 1.0],
+              borderGradientRadius: 0.99,
+              // imagePath0: AppWepb.parkingCardBg0,
+              // imagePath1: AppWepb.parkingCardBg1,
+              isSvg0: false,
+              isSvg1: false,
+              boxFit0: BoxFit.cover,
             ),
           ],
         ),
