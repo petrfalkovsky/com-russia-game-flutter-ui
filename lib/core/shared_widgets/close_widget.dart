@@ -5,7 +5,7 @@ import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/shared_widgets/custom_animated_click.dart';
 
-class CloseWidget extends StatelessWidget {
+class CloseWidgetDeprecated extends StatelessWidget {
   final Function()? onTap;
   final bool isArrowBack;
   final bool secondStyle;
@@ -15,7 +15,7 @@ class CloseWidget extends StatelessWidget {
   final double? width;
   final double? height;
 
-  const CloseWidget({
+  const CloseWidgetDeprecated({
     super.key,
     this.onTap,
     this.isArrowBack = false,
@@ -27,12 +27,12 @@ class CloseWidget extends StatelessWidget {
     this.height,
   });
 
-  factory CloseWidget.hasTitleBack({
+  factory CloseWidgetDeprecated.hasTitleBack({
     Function()? onTap,
     bool inverted = false,
     double? width,
     double? height,
-  }) => CloseWidget(
+  }) => CloseWidgetDeprecated(
     onTap: onTap,
     isArrowBack: true,
     secondStyle: true,

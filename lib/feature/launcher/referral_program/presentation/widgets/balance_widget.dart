@@ -2,7 +2,7 @@ import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dar
 import 'package:com_russia_game_flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_images.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +36,7 @@ class BalanceWidget extends StatelessWidget {
   const BalanceWidget({
     super.key,
     this.child,
-    this.coinIconPath = AppImages.refEdit,
+    this.coinIconPath = AppWepb.refEdit,
     this.balanceValue,
     this.height,
     this.cornerRadius,
@@ -167,7 +167,7 @@ class BalanceWidget extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Image.asset(
-                          isGreyView ? AppImages.refMoney : AppImages.refCoins,
+                          isGreyView ? AppWepb.refMoney : AppWepb.refCoins,
                           width: effectiveIconSize,
                         ),
                         sdpW(context, 14).width,
@@ -194,7 +194,7 @@ class BalanceWidget extends StatelessWidget {
 
                         if (isGreyView)
                           Image.asset(
-                            AppImages.refRub,
+                            AppWepb.refRub,
                             width: effectiveIconSize * 0.416,
                             color: AppColors.refGreen,
                           ),
@@ -240,7 +240,7 @@ class BalanceWidget extends StatelessWidget {
               right: addIconPaddingRight ?? sdpW(context, 37 + 3),
             ),
             child: Image.asset(
-              AppImages.refAdd,
+              AppWepb.refAdd,
               width: effectiveIconSize * 0.666,
               color: isGreyView ? AppColors.white.withOpacity(.5) : AppColors.black,
             ),

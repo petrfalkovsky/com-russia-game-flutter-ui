@@ -1,5 +1,5 @@
-class AppImages {
-  /// Referral program
+class AppWepb {
+  // Referral program
   static const String _referralProgram = 'assets/webp/launcher/referral_program';
   static const String refAdd = '$_referralProgram/ref_add.webp';
   static const String refBg = '$_referralProgram/ref_bg.webp';

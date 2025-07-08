@@ -4,7 +4,7 @@ import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dar
 import 'package:com_russia_game_flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_images.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/accumulated_widget.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/balance_widget.dart';
@@ -28,7 +28,7 @@ class ReferralProgramScreen extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             /// ФОН
-            Positioned.fill(child: Image.asset(AppImages.refBg, fit: BoxFit.cover)),
+            Positioned.fill(child: Image.asset(AppWepb.refBg, fit: BoxFit.cover)),
 
             /// ОСНОВНОЙ КОНТЕНТ СПРАВА
             Positioned(
@@ -129,7 +129,7 @@ class ReferralProgramScreen extends StatelessWidget {
 
                             /// КНОПКА ПОДЕЛИТЬСЯ
                             CloseWidget(
-                              iconPath: AppImages.refShare,
+                              iconPath: AppWepb.refShare,
                               size: _sdp(150),
                               fillGradientColors: [
                                 AppColors.refYellowLight1,
@@ -212,7 +212,7 @@ class ReferralProgramScreen extends StatelessWidget {
                                 rightFlex: 2,
                                 height: _sdp(150),
                                 borderWidth: _sdp(2),
-                                leadIconPath: AppImages.refCoins,
+                                leadIconPath: AppWepb.refCoins,
                                 leadIconSize: _sdp(60),
                                 leftBorderGradientColors: [
                                   AppColors.refGrey2,
@@ -242,7 +242,7 @@ class ReferralProgramScreen extends StatelessWidget {
             ),
 
             /// ОСНОВНОЙ КОНТЕНТ СЛЕВА
-            // ПРОГРАММА
+            // программа
             Positioned(
               top: _sdp(66),
               left: _sdp(467),
@@ -283,7 +283,7 @@ class ReferralProgramScreen extends StatelessWidget {
               ),
             ),
 
-            // РЕФЕРАЛЬНАЯ, ОПИСАНИЕ
+            // реферальная, описание
             Positioned(
               top: _sdp(96),
               left: _sdp(92),
@@ -309,7 +309,7 @@ class ReferralProgramScreen extends StatelessWidget {
               ),
             ),
 
-            /// ПОДЛОЖКА ПО ГОРИЗОНТАЛЬНЙ СПИСОК УРОВНЕЙ ПРОГРАММЫ
+            /// ПОДЛОЖКА ПОД ГОРИЗОНТАЛЬНЙ СПИСОК УРОВНЕЙ ПРОГРАММЫ
             Positioned(
               bottom: 0,
               left: 0,

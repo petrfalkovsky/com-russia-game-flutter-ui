@@ -3,7 +3,7 @@ import 'package:com_russia_game_flutter_ui/core/extensions/sizedbox_extension.da
 import 'package:com_russia_game_flutter_ui/core/shared_widgets/custom_animated_click.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_images.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
@@ -178,7 +178,7 @@ class AccumulatedWidget extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: sdpW(context, 42)),
             child: Row(
               children: [
-                Image.asset(leadIconPath ?? AppImages.refLink, width: effectiveIconSize),
+                Image.asset(leadIconPath ?? AppWepb.refLink, width: effectiveIconSize),
     
                 sdpW(context, 30).width,
     

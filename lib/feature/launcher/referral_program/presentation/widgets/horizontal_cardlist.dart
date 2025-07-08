@@ -2,7 +2,7 @@ import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dar
 import 'package:com_russia_game_flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_images.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
@@ -263,7 +263,7 @@ class HorizontalCardsList extends StatelessWidget {
           Positioned(
             top: sdpW(context, 18),
             right: sdpW(context, 18),
-            child: Center(child: Image.asset(AppImages.refDone, width: sdpW(context, 40))),
+            child: Center(child: Image.asset(AppWepb.refDone, width: sdpW(context, 40))),
           ),
       ],
     );

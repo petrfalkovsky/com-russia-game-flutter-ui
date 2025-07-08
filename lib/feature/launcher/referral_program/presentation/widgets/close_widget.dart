@@ -1,6 +1,6 @@
 import 'package:com_russia_game_flutter_ui/core/shared_widgets/custom_animated_click.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_images.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 
@@ -88,7 +88,7 @@ class CloseWidget extends StatelessWidget {
               child ??
               Center(
                 child: Image.asset(
-                  iconPath ?? AppImages.refClose,
+                  iconPath ?? AppWepb.refClose,
                   width: effectiveIconSize,
                   color: iconColor ?? AppColors.white.withOpacity(.7),
                 ),

@@ -2,7 +2,7 @@ import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dar
 import 'package:com_russia_game_flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_images.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
@@ -119,7 +119,7 @@ class PromocodeWidget extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image.asset(coinIconPath ?? AppImages.refLink, width: effectiveIconSize),
+                    Image.asset(coinIconPath ?? AppWepb.refLink, width: effectiveIconSize),
 
                     sdpW(context, 30).width,
 
@@ -156,7 +156,7 @@ class PromocodeWidget extends StatelessWidget {
                             ),
                             sdpW(context, 92).width,
 
-                            Image.asset(AppImages.refCopy, width: copyIconSize),
+                            Image.asset(AppWepb.refCopy, width: copyIconSize),
                           ],
                         ),
                       ],
@@ -176,7 +176,7 @@ class PromocodeWidget extends StatelessWidget {
                         left: addIconPaddingLeft ?? sdpW(context, 48),
                         right: addIconPaddingRight ?? sdpW(context, 48),
                       ),
-                      child: Image.asset(AppImages.refEdit, width: secondIconSize),
+                      child: Image.asset(AppWepb.refEdit, width: secondIconSize),
                     ),
                   ),
             ),
