@@ -28,7 +28,7 @@ abstract class AppFonts {
     Color color,
     FontWeight fontWeight,
   ) {
-      String fontName = fontAkrobat;
+    String fontName = fontAkrobat;
 
     return TextStyle(
       fontFamily: fontName,
@@ -61,7 +61,7 @@ abstract class AppFonts {
     Color color,
     FontWeight fontWeight,
   ) {
-   String fontName = fontHalvar;
+    String fontName = fontHalvar;
 
     return TextStyle(
       fontFamily: fontName,
@@ -1259,31 +1259,5 @@ abstract class AppFonts {
       color,
       fontWeight,
     ).copyWith(height: sdpW(context, 20) / sdpW(context, 20));
-  }
-
-  /// Weight
-  static String _weightToString(FontWeight fontWeight) {
-    switch (fontWeight) {
-      case FontWeight.w100:
-        return '100';
-      case FontWeight.w200:
-        return '200';
-      case FontWeight.w300:
-        return '300';
-      case FontWeight.w400:
-        return '400';
-      case FontWeight.w500:
-        return '500';
-      case FontWeight.w600:
-        return '600';
-      case FontWeight.w700:
-        return '700';
-      case FontWeight.w800:
-        return '800';
-      case FontWeight.w900:
-        return '900';
-      default:
-        return '400';
-    }
   }
 }

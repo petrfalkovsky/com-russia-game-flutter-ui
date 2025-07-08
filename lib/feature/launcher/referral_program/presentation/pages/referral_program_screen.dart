@@ -308,6 +308,8 @@ class ReferralProgramScreen extends StatelessWidget {
                 ],
               ),
             ),
+
+            /// ПОДЛОЖКА ПО ГОРИЗОНТАЛЬНЙ СПИСОК УРОВНЕЙ ПРОГРАММЫ
             Positioned(
               bottom: 0,
               left: 0,
@@ -315,7 +317,7 @@ class ReferralProgramScreen extends StatelessWidget {
               child: Container(
                 height: _sdp(290),
                 decoration: BoxDecoration(
-                  // градиентный бордер только сверху
+                  // градиентный бордер
                   border: Border(
                     top: BorderSide(width: _sdp(2), color: Colors.transparent),
                   ),
@@ -377,6 +379,7 @@ class ReferralProgramScreen extends StatelessWidget {
               ),
             ),
 
+            /// ГОРИЗОНТАЛЬНЫЙ СПИСОК УРОВНЯ РЕФЕРАЛКИ
             Positioned(
               bottom: 0,
               left: 0,
