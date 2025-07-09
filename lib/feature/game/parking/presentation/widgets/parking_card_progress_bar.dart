@@ -1,12 +1,13 @@
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_sdp_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:flutter/material.dart';
 
 class ParkingCardProgressBar extends StatelessWidget {
-  final double progress; // от 0.0 до 1.0
+  final double progress;
   final String leftText;
-  final String rightText;
+  final String rightText1;
+  final String rightText2;
   final double height;
   final double progressBarHeight;
   final double borderRadius;
@@ -18,7 +19,8 @@ class ParkingCardProgressBar extends StatelessWidget {
     super.key,
     required this.progress,
     required this.leftText,
-    required this.rightText,
+    required this.rightText1,
+    required this.rightText2,
     this.height = 80,
     this.progressBarHeight = 6,
     this.borderRadius = 3,
@@ -30,8 +32,7 @@ class ParkingCardProgressBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final effectiveTextStyle =
-        textStyle ??
-        TextStyle(color: AppColors.white, fontSize: scale(35), fontWeight: FontWeight.w400);
+        textStyle ?? AppFonts.fontAkrobat35(context, AppColors.white, FontWeight.w400);
 
     return SizedBox(
       height: height,
@@ -58,11 +59,34 @@ class ParkingCardProgressBar extends StatelessWidget {
                       ),
                     ),
                     Flexible(
-                      child: Text(
-                        rightText,
-                        style: effectiveTextStyle,
-                        overflow: TextOverflow.ellipsis,
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: rightText1,
+                              style: AppFonts.fontAkrobat35(
+                                context,
+                                AppColors.white,
+                                FontWeight.w700,
+                              ),
+                            ),
+                            TextSpan(
+                              text: rightText2,
+                              style: AppFonts.fontAkrobat35(
+                                context,
+                                AppColors.white,
+                                FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
+                      /// если ричте
+                      // Text(
+                      //   rightText,
+                      //   style: effectiveTextStyle,
+                      //   overflow: TextOverflow.ellipsis,
+                      // ),
                     ),
                   ],
                 ),

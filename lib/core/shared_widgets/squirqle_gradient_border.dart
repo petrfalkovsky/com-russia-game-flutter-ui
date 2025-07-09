@@ -11,6 +11,9 @@ class SquirqleGradientBorder extends StatelessWidget {
   final List<Color>? borderGradientColors;
   final List<double>? borderGradientStops;
   final double borderGradientRadius;
+  final bool isLinearBorderGradient;
+  final AlignmentGeometry? borderGradientBegin;
+  final AlignmentGeometry? borderGradientEnd;
 
   // заливка контейнера
   final List<Color>? fillGradientColors;
@@ -41,6 +44,9 @@ class SquirqleGradientBorder extends StatelessWidget {
     this.borderGradientColors,
     this.borderGradientStops,
     this.borderGradientRadius = 1.09,
+    this.isLinearBorderGradient = false,
+    this.borderGradientBegin,
+    this.borderGradientEnd,
     this.fillGradientColors,
     this.fillGradientStops,
     this.fillGradientBegin,
@@ -140,6 +146,9 @@ class SquirqleGradientBorder extends StatelessWidget {
                 borderGradientColors: borderColors,
                 borderGradientStops: borderStops,
                 borderGradientRadius: borderGradientRadius,
+                isLinearBorderGradient: isLinearBorderGradient,
+                borderGradientBegin: borderGradientBegin,
+                borderGradientEnd: borderGradientEnd,
               ),
             ),
 
@@ -195,6 +204,9 @@ class SmoothHolePainter extends CustomPainter {
   final List<Color> borderGradientColors;
   final List<double> borderGradientStops;
   final double borderGradientRadius;
+  final bool isLinearBorderGradient;
+  final AlignmentGeometry? borderGradientBegin;
+  final AlignmentGeometry? borderGradientEnd;
 
   SmoothHolePainter({
     required this.borderWidth,
@@ -203,16 +215,26 @@ class SmoothHolePainter extends CustomPainter {
     required this.borderGradientColors,
     required this.borderGradientStops,
     required this.borderGradientRadius,
+    this.isLinearBorderGradient = false,
+    this.borderGradientBegin,
+    this.borderGradientEnd,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..shader = RadialGradient(
-        radius: borderGradientRadius,
-        colors: borderGradientColors,
-        stops: borderGradientStops,
-      ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
+      ..shader = isLinearBorderGradient
+          ? LinearGradient(
+              begin: borderGradientBegin ?? Alignment.topCenter,
+              end: borderGradientEnd ?? Alignment.bottomCenter,
+              colors: borderGradientColors,
+              stops: borderGradientStops,
+            ).createShader(Rect.fromLTWH(0, 0, size.width, size.height))
+          : RadialGradient(
+              radius: borderGradientRadius,
+              colors: borderGradientColors,
+              stops: borderGradientStops,
+            ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
 
     final outerPath = SmoothRectangleBorder(
       borderRadius: SmoothBorderRadius(

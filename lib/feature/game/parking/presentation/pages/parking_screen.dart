@@ -13,7 +13,7 @@ class ParkingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-    DevicePreview(enabled: true, builder: (context) =>
+    // DevicePreview(enabled: true, builder: (context) =>
     Material(
       type: MaterialType.transparency,
       child: Center(
@@ -32,7 +32,7 @@ class ParkingScreen extends StatelessWidget {
           ],
         ),
       ),
-      ),
+      // ),
     );
   }
 }
