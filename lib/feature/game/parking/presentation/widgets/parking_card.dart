@@ -12,6 +12,9 @@ class ParkingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final prgress = 0.4;
+    final prgressProcent = prgress * 100;
+
     return Stack(
       children: [
         /// БАЗОВЫЙ КОНТЕЙНЕР ДЛЯ КАРТОЧКИ
@@ -53,9 +56,11 @@ class ParkingCard extends StatelessWidget {
               Image.asset(AppWepb.parkingDefaultCar, width: scale(465)),
 
               ParkingCardProgressBar(
-                progress: 0.8,
-                leftText: "Прогресс",
-                rightText: "30%",
+                progress: prgress,
+                leftText: context.locales.parking_state,
+                rightText: context.locales.parking_procent
+                    .replaceAll('%d', '$prgressProcent')
+                    .toLowerCase(),
                 height: scale(85),
                 progressBarHeight: scale(5),
                 activeColor: Colors.amber,

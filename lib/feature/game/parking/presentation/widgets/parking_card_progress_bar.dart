@@ -13,7 +13,7 @@ class ParkingCardProgressBar extends StatelessWidget {
   final Color activeColor;
   final Color inactiveColor;
   final TextStyle? textStyle;
-  final EdgeInsetsGeometry? padding;
+  
 
   const ParkingCardProgressBar({
     super.key,
@@ -26,7 +26,7 @@ class ParkingCardProgressBar extends StatelessWidget {
     this.activeColor = Colors.yellow,
     this.inactiveColor = const Color(0x80FFFFFF),
     this.textStyle,
-    this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    
   });
 
   @override
@@ -34,19 +34,20 @@ class ParkingCardProgressBar extends StatelessWidget {
     final effectiveTextStyle =
         textStyle ?? AppFonts.fontHalvar32sdpW(context, AppColors.white, FontWeight.w400);
 
-    return Container(
-      height: height,
-      child: Column(
-        children: [
-          // Верхний дивайдер всегда сверху
-          _buildGradientDivider(context),
+    return Align(
+      heightFactor: null,
+      child: SizedBox(
+        height: height,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Верхний дивайдер всегда сверху
+            _buildGradientDivider(context),
 
-          // Основной контент с отступами
-          Expanded(
-            child: Padding(
-              padding: padding ?? EdgeInsets.zero,
+            // Основной контент с отступами
+            Expanded(
               child: Column(
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Текст
                   Row(
@@ -56,7 +57,7 @@ class ParkingCardProgressBar extends StatelessWidget {
                       Text(rightText, style: effectiveTextStyle),
                     ],
                   ),
-
+              
                   // Прогресс бар
                   SizedBox(
                     width: double.infinity,
@@ -73,7 +74,7 @@ class ParkingCardProgressBar extends StatelessWidget {
                             borderRadius: BorderRadius.circular(borderRadius),
                           ),
                         ),
-
+              
                         // Активная часть
                         FractionallySizedBox(
                           alignment: Alignment.centerLeft,
@@ -92,11 +93,11 @@ class ParkingCardProgressBar extends StatelessWidget {
                 ],
               ),
             ),
-          ),
 
-          // Нижний дивайдер всегда снизу
-          _buildGradientDivider(context),
-        ],
+            // Нижний дивайдер всегда снизу
+            _buildGradientDivider(context),
+          ],
+        ),
       ),
     );
   }

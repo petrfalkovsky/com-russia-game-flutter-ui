@@ -1,6 +1,8 @@
+import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_vectors.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:com_russia_game_flutter_ui/feature/game/parking/presentation/widgets/parking_card.dart';
+import 'package:com_russia_game_flutter_ui/feature/game/parking/presentation/widgets/parking_card_progress_bar.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -26,6 +28,7 @@ class ParkingScreen extends StatelessWidget {
 
             //
             ParkingCard(),
+       
           ],
         ),
       ),
