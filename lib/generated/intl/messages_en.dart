@@ -24,6 +24,17 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "RC": MessageLookupByLibrary.simpleMessage("RC"),
         "back": MessageLookupByLibrary.simpleMessage("Назад"),
+        "parking_default_car_name": MessageLookupByLibrary.simpleMessage(
+            "Bentley Continental Flying Spur W12 Mulliner"),
+        "parking_get": MessageLookupByLibrary.simpleMessage("Забрать"),
+        "parking_get_car":
+            MessageLookupByLibrary.simpleMessage("Забрать машину с парковки"),
+        "parking_l": MessageLookupByLibrary.simpleMessage("%d л"),
+        "parking_oil": MessageLookupByLibrary.simpleMessage("Топливо"),
+        "parking_procent": MessageLookupByLibrary.simpleMessage("%d %"),
+        "parking_repair": MessageLookupByLibrary.simpleMessage("Починить"),
+        "parking_search": MessageLookupByLibrary.simpleMessage("Поиск"),
+        "parking_state": MessageLookupByLibrary.simpleMessage("Состояние"),
         "ref_accumulated": MessageLookupByLibrary.simpleMessage("Накоплено"),
         "ref_claim": MessageLookupByLibrary.simpleMessage("Забрать"),
         "ref_description": MessageLookupByLibrary.simpleMessage(

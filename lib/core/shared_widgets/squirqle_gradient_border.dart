@@ -12,12 +12,19 @@ class SquirqleGradientBorder extends StatelessWidget {
   final List<double>? borderGradientStops;
   final double borderGradientRadius;
 
-  // Первое изображение (фон)
+  // заливка контейнера
+  final List<Color>? fillGradientColors;
+  final List<double>? fillGradientStops;
+  final AlignmentGeometry? fillGradientBegin;
+  final AlignmentGeometry? fillGradientEnd;
+  final double? fillGradientRadius;
+
+  // фон 0
   final String? imagePath0;
   final bool isSvg0;
   final BoxFit boxFit0;
 
-  // Второе изображение (поверх фона)
+  // фон 1 (поверх фона)
   final String? imagePath1;
   final bool isSvg1;
   final BoxFit boxFit01;
@@ -34,6 +41,11 @@ class SquirqleGradientBorder extends StatelessWidget {
     this.borderGradientColors,
     this.borderGradientStops,
     this.borderGradientRadius = 1.09,
+    this.fillGradientColors,
+    this.fillGradientStops,
+    this.fillGradientBegin,
+    this.fillGradientEnd,
+    this.fillGradientRadius,
     this.imagePath0,
     this.isSvg0 = true,
     this.boxFit0 = BoxFit.cover,
@@ -53,10 +65,10 @@ class SquirqleGradientBorder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Color> colors =
+    final List<Color> borderColors =
         borderGradientColors ?? [Colors.white.withOpacity(.6), Colors.white.withOpacity(.0)];
 
-    final List<double> stops = borderGradientStops ?? [0.0, 1.0];
+    final List<double> borderStops = borderGradientStops ?? [0.0, 1.0];
 
     return Center(
       child: SizedBox(
@@ -64,7 +76,35 @@ class SquirqleGradientBorder extends StatelessWidget {
         height: height,
         child: Stack(
           children: [
-            // Первое изображение (фон)
+            // заливка контейнера
+            if (fillGradientColors != null)
+              Positioned.fill(
+                child: ClipPath(
+                  clipper: SquircleClipper(
+                    cornerRadius: cornerRadius - borderWidth,
+                    cornerSmoothing: cornerSmoothing,
+                    borderWidth: borderWidth,
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: fillGradientRadius != null
+                          ? RadialGradient(
+                              radius: fillGradientRadius!,
+                              colors: fillGradientColors!,
+                              stops: fillGradientStops,
+                            )
+                          : LinearGradient(
+                              begin: fillGradientBegin ?? Alignment.topCenter,
+                              end: fillGradientEnd ?? Alignment.bottomCenter,
+                              colors: fillGradientColors!,
+                              stops: fillGradientStops,
+                            ),
+                    ),
+                  ),
+                ),
+              ),
+
+            // фон 0
             if (imagePath0 != null)
               Positioned.fill(
                 child: ClipPath(
@@ -77,7 +117,7 @@ class SquirqleGradientBorder extends StatelessWidget {
                 ),
               ),
 
-            // Второе изображение (поверх фона)
+            // фон 1 (поверх фона)
             if (imagePath1 != null)
               Positioned.fill(
                 child: ClipPath(
@@ -90,20 +130,20 @@ class SquirqleGradientBorder extends StatelessWidget {
                 ),
               ),
 
-            // Градиентная рамка
+            // градиентная рамка
             CustomPaint(
               size: Size(width, height),
               painter: SmoothHolePainter(
                 borderWidth: borderWidth,
                 cornerRadius: cornerRadius,
                 cornerSmoothing: cornerSmoothing,
-                borderGradientColors: colors,
-                borderGradientStops: stops,
+                borderGradientColors: borderColors,
+                borderGradientStops: borderStops,
                 borderGradientRadius: borderGradientRadius,
               ),
             ),
 
-            // Контент поверх всего
+            // любой ребенок поверх всего
             if (child != null)
               Positioned.fill(
                 child: Padding(padding: EdgeInsets.all(borderWidth), child: child),

@@ -1,5 +1,6 @@
 import 'package:com_russia_game_flutter_ui/generated/l10n.dart';
 import 'package:com_russia_game_flutter_ui/feature/app/start_screen.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/services.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       locale: const Locale('ru'),
       debugShowCheckedModeBanner: false,
-      home: const StartScreen(),
+      home: DevicePreview(enabled: true, builder: (context) => const StartScreen()),
     );
   }
 }

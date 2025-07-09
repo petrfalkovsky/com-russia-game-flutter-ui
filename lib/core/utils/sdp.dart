@@ -102,3 +102,6 @@ double sdpExtraW(BuildContext context, double px) {
     return (px * 0.29166 / 300) * height * fittingCoefficient;
   }
 }
+
+
+scale(double value) =>  value / 3.0;

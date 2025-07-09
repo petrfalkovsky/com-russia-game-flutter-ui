@@ -19,4 +19,7 @@ class AppWepb {
   static const String _parking = 'assets/webp/game/parking';
   static const String parkingCardBg0 = '$_parking/parking_card_bg_0.webp';
   static const String parkingCardBg1 = '$_parking/parking_card_bg_1.webp';
+  static const String parkingDefaultCar = '$_parking/parking_default_car.webp';
+  static const String parkingSecondScreenBg = '$_parking/parking_second_screen_bg.webp';
+  static const String parkingThirdScreenBg = '$_parking/parking_third_screen_bg.webp';
 }

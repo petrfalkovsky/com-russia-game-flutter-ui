@@ -209,6 +209,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Забрать машину с парковки`
+  String get parking_get_car {
+    return Intl.message(
+      'Забрать машину с парковки',
+      name: 'parking_get_car',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bentley Continental Flying Spur W12 Mulliner`
+  String get parking_default_car_name {
+    return Intl.message(
+      'Bentley Continental Flying Spur W12 Mulliner',
+      name: 'parking_default_car_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Состояние`
+  String get parking_state {
+    return Intl.message(
+      'Состояние',
+      name: 'parking_state',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Топливо`
+  String get parking_oil {
+    return Intl.message(
+      'Топливо',
+      name: 'parking_oil',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Забрать`
+  String get parking_get {
+    return Intl.message(
+      'Забрать',
+      name: 'parking_get',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Поиск`
+  String get parking_search {
+    return Intl.message(
+      'Поиск',
+      name: 'parking_search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `%d л`
+  String get parking_l {
+    return Intl.message(
+      '%d л',
+      name: 'parking_l',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `%d %`
+  String get parking_procent {
+    return Intl.message(
+      '%d %',
+      name: 'parking_procent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Починить`
+  String get parking_repair {
+    return Intl.message(
+      'Починить',
+      name: 'parking_repair',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

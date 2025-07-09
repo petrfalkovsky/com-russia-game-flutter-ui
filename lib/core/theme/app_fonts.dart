@@ -33,7 +33,8 @@ abstract class AppFonts {
     return TextStyle(
       fontFamily: fontName,
       fontWeight: fontWeight,
-      fontSize: sdpW(context, fontSize),
+      // fontSize: sdpW(context, fontSize),
+      fontSize: scale(fontSize),
       color: color,
     );
   }

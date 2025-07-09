@@ -17,5 +17,16 @@
   "ref_claim": "Забрать",
   "ref_you_invite": "Вы пригласили:",
   "ref_persons": "Чел.",
-  "ref_get": "Получить"
+  "ref_get": "Получить",
+
+  "@@comment": "PARKING_LOCALE",
+  "parking_": "Забрать машину с парковки",
+  "parking_": "Bentley Continental Flying Spur W12 Mulliner",
+  "parking_": "Состояние",
+  "parking_": "Топливо",
+  "parking_": "Забрать",
+  "parking_": "Поиск",
+  "parking_": "%d л",
+  "parking_": "%d %",
+  "parking_": "Починить"
 }
