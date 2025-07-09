@@ -1,7 +1,7 @@
 import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_sdp_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:figma_squircle/figma_squircle.dart';
@@ -132,7 +132,7 @@ class PromocodeWidget extends StatelessWidget {
                             Text(
                               textAlign: TextAlign.center,
                               context.locales.ref_your_turn,
-                              style: AppFonts.fontAkrobat30sdpW(
+                              style: AppSdpFonts.fontAkrobat30sdpW(
                                 context,
                                 AppColors.white.withOpacity(.5),
                                 FontWeight.w400,
@@ -148,7 +148,7 @@ class PromocodeWidget extends StatelessWidget {
                             Text(
                               textAlign: TextAlign.center,
                               textValue.toString(),
-                              style: AppFonts.fontAkrobat50sdpW(
+                              style: AppSdpFonts.fontAkrobat50sdpW(
                                 context,
                                 AppColors.white,
                                 FontWeight.w500,

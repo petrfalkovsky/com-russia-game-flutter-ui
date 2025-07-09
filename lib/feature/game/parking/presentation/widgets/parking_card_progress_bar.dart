@@ -1,5 +1,5 @@
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_sdp_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,6 @@ class ParkingCardProgressBar extends StatelessWidget {
   final Color activeColor;
   final Color inactiveColor;
   final TextStyle? textStyle;
-  
 
   const ParkingCardProgressBar({
     super.key,
@@ -26,78 +25,87 @@ class ParkingCardProgressBar extends StatelessWidget {
     this.activeColor = Colors.yellow,
     this.inactiveColor = const Color(0x80FFFFFF),
     this.textStyle,
-    
   });
 
   @override
   Widget build(BuildContext context) {
     final effectiveTextStyle =
-        textStyle ?? AppFonts.fontHalvar32sdpW(context, AppColors.white, FontWeight.w400);
+        textStyle ??
+        TextStyle(color: AppColors.white, fontSize: scale(35), fontWeight: FontWeight.w400);
 
-    return Align(
-      heightFactor: null,
-      child: SizedBox(
-        height: height,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Верхний дивайдер всегда сверху
-            _buildGradientDivider(context),
+    return SizedBox(
+      height: height,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Верхний дивайдер всегда сверху
+          _buildGradientDivider(context),
 
-            // Основной контент с отступами
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // Текст
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // Основной контент
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                // Текст
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        leftText,
+                        style: effectiveTextStyle,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    Flexible(
+                      child: Text(
+                        rightText,
+                        style: effectiveTextStyle,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+
+                // Прогресс бар
+                SizedBox(
+                  width: double.infinity,
+                  height: progressBarHeight,
+                  child: Stack(
+                    alignment: Alignment.centerLeft,
                     children: [
-                      Text(leftText, style: effectiveTextStyle),
-                      Text(rightText, style: effectiveTextStyle),
-                    ],
-                  ),
-              
-                  // Прогресс бар
-                  SizedBox(
-                    width: double.infinity,
-                    height: progressBarHeight,
-                    child: Stack(
-                      alignment: Alignment.centerLeft,
-                      children: [
-                        // Неактивная часть
-                        Container(
-                          width: double.infinity,
+                      // Неактивная часть
+                      Container(
+                        width: double.infinity,
+                        height: progressBarHeight,
+                        decoration: BoxDecoration(
+                          color: inactiveColor,
+                          borderRadius: BorderRadius.circular(borderRadius),
+                        ),
+                      ),
+
+                      // Активная часть
+                      FractionallySizedBox(
+                        alignment: Alignment.centerLeft,
+                        widthFactor: progress.clamp(0.0, 1.0),
+                        child: Container(
                           height: progressBarHeight,
                           decoration: BoxDecoration(
-                            color: inactiveColor,
+                            color: activeColor,
                             borderRadius: BorderRadius.circular(borderRadius),
                           ),
                         ),
-              
-                        // Активная часть
-                        FractionallySizedBox(
-                          alignment: Alignment.centerLeft,
-                          widthFactor: progress.clamp(0.0, 1.0),
-                          child: Container(
-                            height: progressBarHeight,
-                            decoration: BoxDecoration(
-                              color: activeColor,
-                              borderRadius: BorderRadius.circular(borderRadius),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
+          ),
 
-            // Нижний дивайдер всегда снизу
-            _buildGradientDivider(context),
-          ],
-        ),
+          // Нижний дивайдер всегда снизу
+          _buildGradientDivider(context),
+        ],
       ),
     );
   }

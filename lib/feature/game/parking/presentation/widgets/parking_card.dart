@@ -2,6 +2,7 @@ import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dar
 import 'package:com_russia_game_flutter_ui/core/shared_widgets/squirqle_gradient_border.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_sdp_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:com_russia_game_flutter_ui/feature/game/parking/presentation/widgets/parking_card_progress_bar.dart';
@@ -48,7 +49,16 @@ class ParkingCard extends StatelessWidget {
                   width: sdp(context, 370),
                   child: Text(
                     context.locales.parking_default_car_name.toUpperCase(),
-                    style: AppFonts.fontHalvar50sdpW(context, AppColors.white, FontWeight.w500),
+                    style: AppFonts.fontAkrobat34(
+                      context,
+                      AppColors.white.withOpacity(0.3),
+                      FontWeight.w700,
+                    ),
+                    // TextStyle(
+                    //   color: AppColors.white,
+                    //   fontSize: scale(35),
+                    //   fontWeight: FontWeight.w400,
+                    // ),
                   ),
                 ),
               ),

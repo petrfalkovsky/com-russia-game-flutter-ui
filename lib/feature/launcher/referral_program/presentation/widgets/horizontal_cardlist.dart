@@ -1,7 +1,7 @@
 import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_sdp_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:figma_squircle/figma_squircle.dart';
@@ -106,12 +106,12 @@ class HorizontalCardsList extends StatelessWidget {
                 children: [
                   Text(
                     context.locales.ref_you_invite,
-                    style: AppFonts.fontAkrobat50sdpW(context, AppColors.white, FontWeight.w700),
+                    style: AppSdpFonts.fontAkrobat50sdpW(context, AppColors.white, FontWeight.w700),
                   ),
                   _sdp(8).height,
                   Text(
                     '$invitedCount ${context.locales.ref_persons.toUpperCase()}',
-                    style: AppFonts.fontAkrobat70sdpW(
+                    style: AppSdpFonts.fontAkrobat70sdpW(
                       context,
                       AppColors.refYellowLight,
                       FontWeight.w800,
@@ -246,7 +246,7 @@ class HorizontalCardsList extends StatelessWidget {
                       child: Center(
                         child: Text(
                           buttonText.toUpperCase(),
-                          style: AppFonts.fontAkrobat40sdpW(
+                          style: AppSdpFonts.fontAkrobat40sdpW(
                             context,
                             AppColors.black,
                             FontWeight.w500,
@@ -300,7 +300,7 @@ class HorizontalCardsList extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: sdpW(context, 3)),
                 child: Text(
                   level.toString(),
-                  style: AppFonts.fontAkrobat36sdpW(
+                  style: AppSdpFonts.fontAkrobat36sdpW(
                     context,
                     isActive ? AppColors.black : AppColors.white.withOpacity(.2),
                     FontWeight.w900,
@@ -342,7 +342,7 @@ class HorizontalCardsList extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: sdpW(context, 3)),
                 child: Text(
                   level.toString(),
-                  style: AppFonts.fontAkrobat36sdpW(
+                  style: AppSdpFonts.fontAkrobat36sdpW(
                     context,
                     isActive ? AppColors.black : AppColors.white.withOpacity(.2),
                     FontWeight.w700,

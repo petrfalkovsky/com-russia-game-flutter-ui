@@ -2,7 +2,7 @@ import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dar
 import 'package:com_russia_game_flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/shared_widgets/custom_animated_click.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_sdp_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:figma_squircle/figma_squircle.dart';
@@ -189,7 +189,7 @@ class AccumulatedWidget extends StatelessWidget {
                     children: [
                       Text(
                         context.locales.ref_accumulated,
-                        style: AppFonts.fontAkrobat30sdpW(
+                        style: AppSdpFonts.fontAkrobat30sdpW(
                           context,
                           AppColors.white.withOpacity(.5),
                           FontWeight.w400,
@@ -206,7 +206,7 @@ class AccumulatedWidget extends StatelessWidget {
                                 children: [
                                   TextSpan(
                                     text: textValue.toString(),
-                                    style: AppFonts.fontAkrobat50sdpW(
+                                    style: AppSdpFonts.fontAkrobat50sdpW(
                                       context,
                                       AppColors.white,
                                       FontWeight.w500,
@@ -214,7 +214,7 @@ class AccumulatedWidget extends StatelessWidget {
                                   ),
                                   TextSpan(
                                     text: ' ${context.locales.RC}',
-                                    style: AppFonts.fontAkrobat50sdpW(
+                                    style: AppSdpFonts.fontAkrobat50sdpW(
                                       context,
                                       AppColors.refYellowLight,
                                       FontWeight.w500,
@@ -328,7 +328,7 @@ class AccumulatedWidget extends StatelessWidget {
                       ),
                       child: Text(
                         context.locales.ref_claim.toUpperCase(),
-                        style: AppFonts.fontHalvar50sdpW(context, AppColors.black, FontWeight.w500),
+                        style: AppSdpFonts.fontHalvar50sdpW(context, AppColors.black, FontWeight.w500),
                       ),
                     ),
                   ),

@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_sdp_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/accumulated_widget.dart';
@@ -156,7 +156,7 @@ class ReferralProgramScreen extends StatelessWidget {
                                   context.locales.ref_donate_procent
                                       .replaceAll('%d', '1')
                                       .toLowerCase(),
-                                  style: AppFonts.fontAkrobat50sdpW(
+                                  style: AppSdpFonts.fontAkrobat50sdpW(
                                     context,
                                     AppColors.white,
                                     FontWeight.w500,
@@ -169,7 +169,7 @@ class ReferralProgramScreen extends StatelessWidget {
                                   context.locales.ref_referrers
                                       .replaceAll('%d', '25')
                                       .toLowerCase(),
-                                  style: AppFonts.fontAkrobat30sdpW(
+                                  style: AppSdpFonts.fontAkrobat30sdpW(
                                     context,
                                     AppColors.white.withOpacity(.7),
                                     FontWeight.w500,
@@ -268,7 +268,7 @@ class ReferralProgramScreen extends StatelessWidget {
                       child: Text(
                         context.locales.ref_program.toUpperCase(),
                         style:
-                            AppFonts.fontAkrobat32sdpW(
+                            AppSdpFonts.fontAkrobat32sdpW(
                               context,
                               AppColors.refBrown,
                               FontWeight.w700,
@@ -292,14 +292,14 @@ class ReferralProgramScreen extends StatelessWidget {
                 children: [
                   Text(
                     context.locales.ref_referral.toUpperCase(),
-                    style: AppFonts.fontAkrobat120sdpW(context, AppColors.white, FontWeight.w900),
+                    style: AppSdpFonts.fontAkrobat120sdpW(context, AppColors.white, FontWeight.w900),
                   ),
 
                   _sdp(36).height,
 
                   Text(
                     context.locales.ref_description,
-                    style: AppFonts.fontAkrobat36sdpW(
+                    style: AppSdpFonts.fontAkrobat36sdpW(
                       context,
                       AppColors.white.withOpacity(.6),
                       FontWeight.w300,
@@ -353,7 +353,7 @@ class ReferralProgramScreen extends StatelessWidget {
                           Text(
                             textAlign: TextAlign.center,
                             context.locales.ref_you_invite,
-                            style: AppFonts.fontAkrobat50sdpW(
+                            style: AppSdpFonts.fontAkrobat50sdpW(
                               context,
                               AppColors.white,
                               FontWeight.w500,
@@ -365,7 +365,7 @@ class ReferralProgramScreen extends StatelessWidget {
                           Text(
                             textAlign: TextAlign.center,
                             '10 ${context.locales.ref_persons.toUpperCase()}',
-                            style: AppFonts.fontAkrobat70sdpW(
+                            style: AppSdpFonts.fontAkrobat70sdpW(
                               context,
                               AppColors.refYellowLight,
                               FontWeight.w800,

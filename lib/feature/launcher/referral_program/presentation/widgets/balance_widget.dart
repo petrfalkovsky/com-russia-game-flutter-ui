@@ -1,7 +1,7 @@
 import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_sdp_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:figma_squircle/figma_squircle.dart';
@@ -175,7 +175,7 @@ class BalanceWidget extends StatelessWidget {
                         Text(
                           textAlign: TextAlign.center,
                           balanceValue ?? '0',
-                          style: AppFonts.fontAkrobat50sdpW(
+                          style: AppSdpFonts.fontAkrobat50sdpW(
                             context,
                             AppColors.white,
                             FontWeight.w500,
@@ -185,7 +185,7 @@ class BalanceWidget extends StatelessWidget {
                         Text(
                           textAlign: TextAlign.center,
                           isGreyView ? '' : context.locales.RC,
-                          style: AppFonts.fontHalvar50sdpW(
+                          style: AppSdpFonts.fontHalvar50sdpW(
                             context,
                             isGreyView ? AppColors.refGreen : AppColors.refYellowLight,
                             FontWeight.w500,

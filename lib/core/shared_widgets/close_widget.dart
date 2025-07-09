@@ -2,7 +2,7 @@ import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dar
 import 'package:com_russia_game_flutter_ui/core/utils/responsive_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_sdp_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/shared_widgets/custom_animated_click.dart';
 
 class CloseWidgetDeprecated extends StatelessWidget {
@@ -110,7 +110,7 @@ class CloseWidgetDeprecated extends StatelessWidget {
                       context.locales.back,
                       textAlign: TextAlign.center,
                       style:
-                          AppFonts.fontAkrobat34sdp(
+                          AppSdpFonts.fontAkrobat34sdp(
                             context,
                             inverted
                                 ? AppColors.black.withOpacity(0.3)
