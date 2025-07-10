@@ -279,7 +279,12 @@ class ParkomatCard extends StatelessWidget {
 
                 SizedBox(height: scale(45)),
 
-                ParkomatCardPrice(height: scale(120), rightText: '120000'.formatPriceWithSpaces),
+                ParkomatCardPrice(
+                  isActive: true,
+                  height: scale(120),
+                  rightText: '120000'.formatPriceWithSpaces,
+                  onButtonPressed: () {},
+                ),
               ],
             ),
           ),

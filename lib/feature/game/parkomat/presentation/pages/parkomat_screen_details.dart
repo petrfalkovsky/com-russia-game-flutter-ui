@@ -4,10 +4,9 @@ import 'package:com_russia_game_flutter_ui/feature/game/parkomat/presentation/wi
 import 'package:com_russia_game_flutter_ui/feature/game/parkomat/presentation/widgets/parkomat_card/parkomat_card.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-class ParkomatScreen extends StatelessWidget {
-  const ParkomatScreen({super.key});
+class ParkomatDetailsScreen extends StatelessWidget {
+  const ParkomatDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,10 @@ class ParkomatScreen extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               /// ФОН
-              Positioned.fill(child: SvgPicture.asset(AppVectors.parkingBg, fit: BoxFit.cover)),
+              Positioned.fill(child: Image.asset(AppVectors.parkingBg, fit: BoxFit.cover)),
+
+              /// КАРТОЧКА МАШИНЫ
+              // ParkomatCard(),
 
               /// ОСНОВНОЙ КОНТЕНТ
               Padding(
@@ -32,7 +34,7 @@ class ParkomatScreen extends StatelessWidget {
 
                     Spacer(),
 
-                    /// СПИСОК КАРТОЧКА МАШИНЫ
+                    /// СПИСОК МАШИН (в центре экрана)
                     Center(
                       child: SizedBox(
                         height: scale(806),

@@ -10,16 +10,16 @@ class ParkomatCardPrice extends StatelessWidget {
   final double height;
   final TextStyle? textStyle;
   final String? rightText;
-
   final VoidCallback? onButtonPressed;
+  final bool isActive;
 
   const ParkomatCardPrice({
     super.key,
     this.height = 80,
     this.textStyle,
     this.rightText,
-
     this.onButtonPressed,
+    this.isActive = true,
   });
 
   @override
@@ -78,21 +78,40 @@ class ParkomatCardPrice extends StatelessWidget {
 
         Expanded(
           child: TapAnimation(
-            onTap: () {},
+            onTap: isActive ? onButtonPressed : null,
             child: SquirqleGradientBorder(
               height: scale(120),
               borderWidth: 0,
               cornerRadius: scale(30),
               cornerSmoothing: 1.0,
+
+              // желтый градиент
               fillGradientColors: [AppColors.refYellowLight1, AppColors.refYellowDark2],
               fillGradientBegin: Alignment.topLeft,
               fillGradientEnd: Alignment.bottomRight,
+
+              // затемнение
+              background2: isActive
+                  ? null
+                  : BackgroundConfig(
+                      colors: [Colors.black.withOpacity(0.5), Colors.black.withOpacity(0.5)],
+                      isRadial: false,
+                      gradientBegin: Alignment.topCenter,
+                      gradientEnd: Alignment.bottomCenter,
+                    ),
+
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: scale(42)),
                 child: Center(
                   child: Text(
                     context.locales.parking_get.toUpperCase(),
-                    style: AppFonts.fontHalvar50(context, AppColors.black, FontWeight.w500),
+                    style: AppFonts.fontHalvar50(
+                      context,
+                      isActive
+                          ? AppColors.black
+                          : AppColors.black.withOpacity(0.6),
+                      FontWeight.w500,
+                    ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
