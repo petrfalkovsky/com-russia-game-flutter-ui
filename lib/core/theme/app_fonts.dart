@@ -362,6 +362,10 @@ abstract class AppFonts {
     return baseHalvarW(context, 36, color, fontWeight).copyWith(height: 1);
   }
 
+  static TextStyle fontHalvar35(BuildContext context, Color color, FontWeight fontWeight) {
+    return baseHalvar(context, 35, color, fontWeight).copyWith(height: 1);
+  }
+
   static TextStyle fontHalvar34(BuildContext context, Color color, FontWeight fontWeight) {
     return baseHalvar(context, 34, color, fontWeight).copyWith(height: 1);
   }

@@ -187,7 +187,7 @@ class BalanceWidget extends StatelessWidget {
                           isGreyView ? '' : context.locales.RC,
                           style: AppSdpFonts.fontHalvar50sdpW(
                             context,
-                            isGreyView ? AppColors.refGreen : AppColors.refYellowLight,
+                            isGreyView ? AppColors.green : AppColors.refYellowLight,
                             FontWeight.w500,
                           ),
                         ),
@@ -196,7 +196,7 @@ class BalanceWidget extends StatelessWidget {
                           Image.asset(
                             AppWepb.refRub,
                             width: effectiveIconSize * 0.416,
-                            color: AppColors.refGreen,
+                            color: AppColors.green,
                           ),
                       ],
                     ),

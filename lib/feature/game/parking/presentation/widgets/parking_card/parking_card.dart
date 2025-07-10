@@ -1,11 +1,13 @@
 import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dart';
+import 'package:com_russia_game_flutter_ui/core/extensions/string_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/shared_widgets/squirqle_gradient_border.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_vectors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
-import 'package:com_russia_game_flutter_ui/feature/game/parking/presentation/widgets/parking_card_progress_bar.dart';
+import 'package:com_russia_game_flutter_ui/feature/game/parking/presentation/widgets/parking_card/parking_card_price.dart';
+import 'package:com_russia_game_flutter_ui/feature/game/parking/presentation/widgets/parking_card/parking_card_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -73,6 +75,7 @@ class ParkingCard extends StatelessWidget {
 
               SizedBox(height: scale(18)),
 
+              /// ИЗОБРАЖЕНИЕ
               Image.asset(AppWepb.parkingDefaultCar, width: scale(465)),
 
               SizedBox(height: scale(24)),
@@ -242,6 +245,8 @@ class ParkingCard extends StatelessWidget {
                   ),
                 ],
               ),
+
+              ParkingCardPrice(height: scale(120), rightText: '220 000'.formatPriceWithSpaces),
             ],
           ),
         ),
