@@ -20,7 +20,7 @@ class ParkingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BorderState currentState = BorderState.normal;
+    BorderState currentState = BorderState.active;
 
     final double progress = 0.4;
     final double liters = 80;
@@ -61,15 +61,21 @@ class ParkingCard extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: SizedBox(
-                  width: sdp(context, 370),
+                  width: sdp(context, 480),
                   child: Text(
                     context.locales.parking_default_car_name.toUpperCase(),
                     style: AppFonts.fontAkrobat35(context, AppColors.white, FontWeight.w700),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ),
 
+              SizedBox(height: scale(18)),
+
               Image.asset(AppWepb.parkingDefaultCar, width: scale(465)),
+
+              SizedBox(height: scale(24)),
 
               /// СОСТОЯНИЕ
               Row(
@@ -80,12 +86,12 @@ class ParkingCard extends StatelessWidget {
                       progress: progress,
                       leftText: context.locales.parking_state,
                       rightText1: context.locales.parking_procent
-                          .replaceAll('%d', '$prgressProcent')
+                          .replaceAll('%d', '${prgressProcent.toInt()}')
                           .toLowerCase(),
                       rightText2: '',
                       height: scale(85),
                       progressBarHeight: scale(5),
-                      activeColor: Colors.amber,
+                      activeColor: AppColors.parkingYellow,
                       inactiveColor: Colors.white.withOpacity(0.3),
                     ),
                   ),
@@ -97,7 +103,7 @@ class ParkingCard extends StatelessWidget {
                     // размеры
                     width: scale(85),
                     height: scale(85),
-                    borderWidth: currentState == BorderState.active ? scale(6) : scale(2),
+                    borderWidth: currentState == BorderState.active ? scale(5) : scale(2),
                     cornerRadius: scale(25),
 
                     // границы
@@ -154,6 +160,8 @@ class ParkingCard extends StatelessWidget {
                 ],
               ),
 
+              SizedBox(height: scale(35)),
+
               /// ТОПЛИВО
               Row(
                 children: [
@@ -163,10 +171,10 @@ class ParkingCard extends StatelessWidget {
                       progress: fuelProgress,
                       leftText: context.locales.parking_oil,
                       rightText1: '${liters.toInt()} $literUnit',
-                      rightText2: '/ ${maxLiters.toInt()} $literUnit',
+                      rightText2: ' / ${maxLiters.toInt()} $literUnit',
                       height: scale(85),
                       progressBarHeight: scale(5),
-                      activeColor: Colors.amber,
+                      activeColor: AppColors.parkingYellow,
                       inactiveColor: Colors.white.withOpacity(0.3),
                     ),
                   ),
