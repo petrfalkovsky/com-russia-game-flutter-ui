@@ -10,7 +10,7 @@ class StartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> items = [
       {'title': 'Реферальная программа', 'screen': const ReferralProgramScreen()},
-      {'title': 'Парковка', 'screen': const ParkingScreen()},
+      {'title': 'Паркоматы', 'screen': const ParkingScreen()},
     ];
 
     return Scaffold(

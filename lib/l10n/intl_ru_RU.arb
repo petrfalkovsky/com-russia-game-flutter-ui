@@ -20,13 +20,13 @@
   "ref_get": "Получить",
 
   "@@comment": "PARKING_LOCALE",
-  "parking_": "Забрать машину с парковки",
-  "parking_": "Bentley Continental Flying Spur W12 Mulliner",
-  "parking_": "Состояние",
-  "parking_": "Топливо",
-  "parking_": "Забрать",
-  "parking_": "Поиск",
-  "parking_": "%d л",
-  "parking_": "%d %",
-  "parking_": "Починить"
+  "parking_get_car": "Забрать машину с парковки",
+  "parking_default_car_name": "Bentley Continental Flying Spur W12 Mulliner",
+  "parking_state": "Состояние",
+  "parking_oil": "Топливо",
+  "parking_get": "Забрать",
+  "parking_search": "Поиск",
+  "parking_l": "%d л",
+  "parking_procent": "%d %",
+  "parking_repair": "Починить"
 }

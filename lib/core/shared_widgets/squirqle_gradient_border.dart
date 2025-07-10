@@ -14,6 +14,7 @@ class SquirqleGradientBorder extends StatelessWidget {
   final bool isLinearBorderGradient;
   final AlignmentGeometry? borderGradientBegin;
   final AlignmentGeometry? borderGradientEnd;
+   final EdgeInsets? padding; 
 
   // заливка контейнера
   final List<Color>? fillGradientColors;
@@ -59,6 +60,7 @@ class SquirqleGradientBorder extends StatelessWidget {
     this.isSvg1 = true,
     this.boxFit01 = BoxFit.cover,
     this.child,
+    this.padding,
   });
 
   Widget _buildImage({required String path, required bool isSvg, required BoxFit fit}) {
@@ -155,7 +157,12 @@ class SquirqleGradientBorder extends StatelessWidget {
             // любой ребенок поверх всего
             if (child != null)
               Positioned.fill(
-                child: Padding(padding: EdgeInsets.all(borderWidth), child: child),
+                child: Padding(
+                  padding:
+                      padding ??
+                      EdgeInsets.all(borderWidth),
+                  child: child,
+                ),
               ),
           ],
         ),

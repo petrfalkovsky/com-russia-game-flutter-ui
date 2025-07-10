@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 class CloseWidget extends StatelessWidget {
   final Widget? child;
   final String? iconPath;
-  final double? size;
+  final double? width;
+  final double? height;
   final double? cornerRadius;
-
   final double? cornerSmoothing;
   final double? borderWidth;
   final double? iconSize;
@@ -18,11 +18,14 @@ class CloseWidget extends StatelessWidget {
   final List<Color>? fillGradientColors;
   final Color? iconColor;
 
+  final VoidCallback? onTap;
+
   const CloseWidget({
     super.key,
     this.child,
     this.iconPath,
-    this.size,
+    this.width,
+    this.height,
     this.cornerRadius,
     this.cornerSmoothing,
     this.borderWidth,
@@ -31,11 +34,13 @@ class CloseWidget extends StatelessWidget {
     this.borderGradientColors,
     this.fillGradientColors,
     this.iconColor,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    final double effectiveSize = size ?? 100;
+    final double effectiveWidth = width ?? 100;
+    final double effectiveHeight = height ?? 100;
     final double radius = cornerRadius ?? 30.0;
     final double smoothing = cornerSmoothing ?? 1.0;
     final double effectiveBorderWidth = borderWidth ?? 1.0;
@@ -54,9 +59,10 @@ class CloseWidget extends StatelessWidget {
         fillGradientColors ?? const [Color(0xFF282828), Color(0xFF1F1F1F)];
 
     return TapAnimation(
+      onTap: onTap,
       child: Container(
-        width: effectiveSize,
-        height: effectiveSize,
+        width: effectiveWidth,
+        height: effectiveHeight,
         decoration: ShapeDecoration(
           shape: SmoothRectangleBorder(
             borderRadius: SmoothBorderRadius(cornerRadius: radius, cornerSmoothing: smoothing),

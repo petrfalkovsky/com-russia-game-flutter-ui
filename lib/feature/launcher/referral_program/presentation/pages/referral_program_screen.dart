@@ -88,7 +88,9 @@ class ReferralProgramScreen extends StatelessWidget {
 
                       /// КНОПКА ЗАКРЫТЬ
                       CloseWidget(
-                        size: _sdp(100),
+                        onTap: () => Navigator.pop(context),
+                        width: _sdp(100),
+                        height: _sdp(100),
                         cornerRadius: _sdp(30),
                         borderWidth: _sdp(1),
                         iconSize: _sdp(40),
@@ -130,7 +132,9 @@ class ReferralProgramScreen extends StatelessWidget {
                             /// КНОПКА ПОДЕЛИТЬСЯ
                             CloseWidget(
                               iconPath: AppWepb.refShare,
-                              size: _sdp(150),
+
+                              width: _sdp(150),
+                              height: _sdp(150),
                               fillGradientColors: [
                                 AppColors.refYellowLight1,
                                 AppColors.refYellowDark2,
@@ -292,7 +296,11 @@ class ReferralProgramScreen extends StatelessWidget {
                 children: [
                   Text(
                     context.locales.ref_referral.toUpperCase(),
-                    style: AppSdpFonts.fontAkrobat120sdpW(context, AppColors.white, FontWeight.w900),
+                    style: AppSdpFonts.fontAkrobat120sdpW(
+                      context,
+                      AppColors.white,
+                      FontWeight.w900,
+                    ),
                   ),
 
                   _sdp(36).height,
