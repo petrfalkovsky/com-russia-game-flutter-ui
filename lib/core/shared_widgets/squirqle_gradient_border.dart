@@ -14,7 +14,7 @@ class SquirqleGradientBorder extends StatelessWidget {
   final bool isLinearBorderGradient;
   final AlignmentGeometry? borderGradientBegin;
   final AlignmentGeometry? borderGradientEnd;
-   final EdgeInsets? padding; 
+  final EdgeInsets? padding;
 
   // заливка контейнера
   final List<Color>? fillGradientColors;
@@ -22,6 +22,10 @@ class SquirqleGradientBorder extends StatelessWidget {
   final AlignmentGeometry? fillGradientBegin;
   final AlignmentGeometry? fillGradientEnd;
   final double? fillGradientRadius;
+
+  // параметры для двух встроенных фонов
+  final BackgroundConfig? background1;
+  final BackgroundConfig? background2;
 
   // фон 0
   final String? imagePath0;
@@ -53,6 +57,8 @@ class SquirqleGradientBorder extends StatelessWidget {
     this.fillGradientBegin,
     this.fillGradientEnd,
     this.fillGradientRadius,
+    this.background1,
+    this.background2,
     this.imagePath0,
     this.isSvg0 = true,
     this.boxFit0 = BoxFit.cover,
@@ -69,6 +75,35 @@ class SquirqleGradientBorder extends StatelessWidget {
     } else {
       return Image.asset(path, fit: fit);
     }
+  }
+
+  Widget _buildBackgroundLayer(BackgroundConfig config) {
+    return Positioned.fill(
+      child: ClipPath(
+        clipper: SquircleClipper(
+          cornerRadius: cornerRadius - borderWidth,
+          cornerSmoothing: cornerSmoothing,
+          borderWidth: borderWidth,
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: config.isRadial
+                ? RadialGradient(
+                    center: config.gradientCenter ?? Alignment.center,
+                    radius: config.gradientRadius ?? 1.0,
+                    colors: config.colors,
+                    stops: config.stops,
+                  )
+                : LinearGradient(
+                    begin: config.gradientBegin ?? Alignment.topCenter,
+                    end: config.gradientEnd ?? Alignment.bottomCenter,
+                    colors: config.colors,
+                    stops: config.stops,
+                  ),
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -112,7 +147,13 @@ class SquirqleGradientBorder extends StatelessWidget {
                 ),
               ),
 
-            // фон 0
+            // фон 1 (нижний слой)
+            if (background1 != null) _buildBackgroundLayer(background1!),
+
+            // фон 2 (верхний слой)
+            if (background2 != null) _buildBackgroundLayer(background2!),
+
+            // фон-изображение 0
             if (imagePath0 != null)
               Positioned.fill(
                 child: ClipPath(
@@ -125,7 +166,7 @@ class SquirqleGradientBorder extends StatelessWidget {
                 ),
               ),
 
-            // фон 1 (поверх фона)
+            // фон-изоражение 1 (поверх фона)
             if (imagePath1 != null)
               Positioned.fill(
                 child: ClipPath(
@@ -157,18 +198,33 @@ class SquirqleGradientBorder extends StatelessWidget {
             // любой ребенок поверх всего
             if (child != null)
               Positioned.fill(
-                child: Padding(
-                  padding:
-                      padding ??
-                      EdgeInsets.all(borderWidth),
-                  child: child,
-                ),
+                child: Padding(padding: padding ?? EdgeInsets.all(borderWidth), child: child),
               ),
           ],
         ),
       ),
     );
   }
+}
+
+class BackgroundConfig {
+  final List<Color> colors;
+  final List<double>? stops;
+  final bool isRadial;
+  final AlignmentGeometry? gradientBegin;
+  final AlignmentGeometry? gradientEnd;
+  final AlignmentGeometry? gradientCenter;
+  final double? gradientRadius;
+
+  const BackgroundConfig({
+    required this.colors,
+    this.stops,
+    this.isRadial = false,
+    this.gradientBegin,
+    this.gradientEnd,
+    this.gradientCenter,
+    this.gradientRadius,
+  });
 }
 
 class SquircleClipper extends CustomClipper<Path> {
