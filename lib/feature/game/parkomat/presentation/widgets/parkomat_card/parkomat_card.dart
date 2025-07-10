@@ -6,8 +6,8 @@ import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_vectors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
-import 'package:com_russia_game_flutter_ui/feature/game/parking/presentation/widgets/parking_card/parking_card_price.dart';
-import 'package:com_russia_game_flutter_ui/feature/game/parking/presentation/widgets/parking_card/parking_card_progress_bar.dart';
+import 'package:com_russia_game_flutter_ui/feature/game/parkomat/presentation/widgets/parkomat_card/parkomat_card_price.dart';
+import 'package:com_russia_game_flutter_ui/feature/game/parkomat/presentation/widgets/parkomat_card/parkomat_card_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -17,8 +17,8 @@ enum BorderState {
   active, // толстые желтые границы и желтая иконка
 }
 
-class ParkingCard extends StatelessWidget {
-  const ParkingCard({super.key});
+class ParkomatCard extends StatelessWidget {
+  const ParkomatCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +102,7 @@ class ParkingCard extends StatelessWidget {
                   children: [
                     /// СОСТОЯНИЕ ПРОГРЕСС БАР
                     Expanded(
-                      child: ParkingCardProgressBar(
+                      child: ParkomatCardProgressBar(
                         progress: progress,
                         leftText: context.locales.parking_state,
                         rightText1: context.locales.parking_procent
@@ -194,7 +194,7 @@ class ParkingCard extends StatelessWidget {
                   children: [
                     /// СОСТОЯНИЕ ПРОГРЕСС БАР
                     Expanded(
-                      child: ParkingCardProgressBar(
+                      child: ParkomatCardProgressBar(
                         progress: fuelProgress,
                         leftText: context.locales.parking_oil,
                         rightText1: '${liters.toInt()} $literUnit',
@@ -279,7 +279,7 @@ class ParkingCard extends StatelessWidget {
 
                 SizedBox(height: scale(45)),
 
-                ParkingCardPrice(height: scale(120), rightText: '120000'.formatPriceWithSpaces),
+                ParkomatCardPrice(height: scale(120), rightText: '120000'.formatPriceWithSpaces),
               ],
             ),
           ),

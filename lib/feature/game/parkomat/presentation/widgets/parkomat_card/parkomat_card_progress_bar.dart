@@ -3,7 +3,7 @@ import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:flutter/material.dart';
 
-class ParkingCardProgressBar extends StatelessWidget {
+class ParkomatCardProgressBar extends StatelessWidget {
   final double progress;
   final String leftText;
   final String rightText1;
@@ -15,7 +15,7 @@ class ParkingCardProgressBar extends StatelessWidget {
   final Color inactiveColor;
   final TextStyle? textStyle;
 
-  const ParkingCardProgressBar({
+  const ParkomatCardProgressBar({
     super.key,
     required this.progress,
     required this.leftText,

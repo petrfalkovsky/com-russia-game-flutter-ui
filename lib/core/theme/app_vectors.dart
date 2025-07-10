@@ -1,5 +1,5 @@
 class AppVectors {
-  // Parking
+  // Parkomat
   static const String _parking = 'assets/svg/game/parking';
   static const String parkingBg = '$_parking/parking_bg.svg';
   static const String parkingOil = '$_parking/parking_oil.svg';

@@ -1,5 +1,5 @@
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
-import 'package:com_russia_game_flutter_ui/feature/game/parking/presentation/pages/parking_screen.dart';
+import 'package:com_russia_game_flutter_ui/feature/game/parkomat/presentation/pages/parkomat_screen.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/pages/referral_program_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +10,7 @@ class StartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> items = [
       {'title': 'Реферальная программа', 'screen': const ReferralProgramScreen()},
-      {'title': 'Паркоматы', 'screen': const ParkingScreen()},
+      {'title': 'Паркоматы', 'screen': const ParkomatScreen()},
     ];
 
     return Scaffold(

@@ -15,7 +15,7 @@ class AppWepb {
   static const String refShare = '$_referralProgram/ref_share.webp';
   static const String refRub = '$_referralProgram/ref_rub.webp';
 
-  //Parking
+  //Parkomat
   static const String _parking = 'assets/webp/game/parking';
   static const String parkingCardBg0 = '$_parking/parking_card_bg_0.webp';
   static const String parkingCardBg1 = '$_parking/parking_card_bg_1.webp';

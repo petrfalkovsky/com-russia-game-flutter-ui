@@ -6,14 +6,14 @@ import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:flutter/material.dart';
 
-class ParkingCardPrice extends StatelessWidget {
+class ParkomatCardPrice extends StatelessWidget {
   final double height;
   final TextStyle? textStyle;
   final String? rightText;
 
   final VoidCallback? onButtonPressed;
 
-  const ParkingCardPrice({
+  const ParkomatCardPrice({
     super.key,
     this.height = 80,
     this.textStyle,

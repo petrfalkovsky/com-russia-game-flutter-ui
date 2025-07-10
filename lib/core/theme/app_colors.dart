@@ -22,7 +22,7 @@ class AppColors {
   static const Color refGrey = Color(0xFF323639);
   static const Color refGrey2 = Color(0xFF0B1013);
 
-  // Parking
+  // Parkomat
   static const Color parkingYellow = Color(0xFFFED90E);
   static const Color parkingGrey = Color(0xFF4E5253);
 }
