@@ -9,7 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ParkomatAppBar extends StatelessWidget {
-  const ParkomatAppBar({super.key});
+  final TextStyle? textStyle;
+
+  const ParkomatAppBar({super.key, this.textStyle});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class ParkomatAppBar extends StatelessWidget {
         /// ЗАГОЛОВОК
         Text(
           context.locales.parking_get_car.toUpperCase(),
-          style: AppFonts.fontHalvar80(context, AppColors.white, FontWeight.w500),
+          style:    textStyle ?? AppFonts.fontHalvar80(context, AppColors.white, FontWeight.w500),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
