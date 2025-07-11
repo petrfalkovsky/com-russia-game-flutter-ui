@@ -25,7 +25,7 @@ class ParkomatDetailsScreen extends StatefulWidget {
 
 class _ParkomatDetailsScreenState extends State<ParkomatDetailsScreen> {
   final ScrollController _scrollController = ScrollController();
-  int selectedIndex = 0;
+  int selectedIndex = 2;
 
   @override
   void initState() {
@@ -59,7 +59,7 @@ class _ParkomatDetailsScreenState extends State<ParkomatDetailsScreen> {
 
               /// ОСНОВНОЙ КОНТЕНТ
               Padding(
-                padding: EdgeInsets.only(left: scale(90), top: scale(40), bottom: scale(63)),
+                padding: EdgeInsets.only(left: scale(90), top: scale(68)),
                 child: Column(
                   children: [
                     /// ЭППБАР
@@ -84,39 +84,37 @@ class _ParkomatDetailsScreenState extends State<ParkomatDetailsScreen> {
 
                     /// ОСНОВНОЙ КОНТЕНТ ЭКРАНА
                     Expanded(
-                      child: Stack(
-                        children: [
-                          Row(
-                            children: [
-                              /// ЛЕВАЯ ЧАСТЬ ЭКРАНА
-                              /// СПИСОК КАРТОЧЕК АВТО
-                              SizedBox(
-                                width: scale(380) * 1.04 + scale(25),
-                                child: Stack(
-                                  children: [
-                                    /// КАСТОМНЫЙ СКРОЛЛБАР СЛЕВА
-                                    Positioned(
-                                      left: 0,
-                                      top: 0,
-                                      bottom: 0,
-                                      child: _buildCustomScrollbar(),
-                                    ),
+                      child: Padding(
+                        padding: EdgeInsets.only(right: scale(90), top: scale(73)),
+                        child: Stack(
+                          children: [
+                            Row(
+                              children: [
+                                /// ЛЕВАЯ ЧАСТЬ ЭКРАНА
+                                /// СПИСОК КАРТОЧЕК АВТО
+                                SizedBox(
+                                  width: scale(380) * 1.04 + scale(25),
+                                  child: Stack(
+                                    children: [
+                                      /// КАСТОМНЫЙ СКРОЛЛБАР СЛЕВА
+                                      Positioned(
+                                        left: 0,
+                                        top: 0,
+                                        bottom: 0,
+                                        child: _buildCustomScrollbar(),
+                                      ),
 
-                                    /// СПИСОК КАРТОЧЕК КАК КОЛОНКА
-                                    Positioned(
-                                      // left: scale(20),
-                                      top: 0,
-                                      bottom: 0,
-                                      right: 0,
-                                      child: SingleChildScrollView(
-                                        controller: _scrollController,
-                                        child: Column(
-                                          children: List.generate(8, (index) {
-                                            return Padding(
-                                              padding: EdgeInsets.only(
-                                                bottom: index == 7 ? 0 : scale(20),
-                                              ),
-                                              child: GestureDetector(
+                                      /// СПИСОК КАРТОЧЕК КАК КОЛОНКА
+                                      Positioned(
+                                        // left: scale(20),
+                                        top: 0,
+                                        bottom: 0,
+                                        right: 0,
+                                        child: SingleChildScrollView(
+                                          controller: _scrollController,
+                                          child: Column(
+                                            children: List.generate(10, (index) {
+                                              return GestureDetector(
                                                 onTap: () {
                                                   setState(() {
                                                     selectedIndex = index;
@@ -125,138 +123,146 @@ class _ParkomatDetailsScreenState extends State<ParkomatDetailsScreen> {
                                                 child: ParkomatCardDetails(
                                                   isSelected: selectedIndex == index,
                                                 ),
-                                              ),
-                                            );
-                                          }),
+                                              );
+                                            }),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-
-                              /// ЦЕНТР
-                              /// ИЗОБРАЖЕНИЕ
-                              Expanded(
-                                flex: 2,
-                                child: Center(
-                                  child: Image.asset(
-                                    width: scale(950),
-                                    height: scale(534),
-                                    AppWepb.parkingDefaultCar,
-                                    fit: BoxFit.contain,
+                                    ],
                                   ),
                                 ),
-                              ),
 
-                              /// ПРАВАЯ ЧАСТЬ ЭКРАНА
-                              /// СОСТОЯНИЕ ПРГРЕСС БАР, КНОПКА ПОЧИНИТЬ
-                              Expanded(
-                                flex: 1,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    /// СОСТОЯНИЕ ПРГРЕСС БАР
-                                    Column(
+                                /// ЦЕНТР
+                                /// ИЗОБРАЖЕНИЕ
+                                Expanded(
+                                  flex: 2,
+                                  child: Center(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        SizedBox(
-                                          width: scale(523),
-                                          child: ParkomatCardProgressBar(
-                                            progress: progress,
-                                            leftText: context.locales.parking_state,
-                                            rightText1: context.locales.parking_procent
-                                                .replaceAll('%d', '${prgressProcent.toInt()}')
-                                                .toLowerCase(),
-                                            rightText2: '',
-                                            height: scale(85),
-                                            progressBarHeight: scale(5),
-                                            activeColor: AppColors.parkingYellow,
-                                            inactiveColor: Colors.white.withOpacity(0.3),
-                                            textStyle: AppFonts.fontAkrobat35(
-                                              context,
-                                              AppColors.white.withOpacity(.5),
-                                              FontWeight.w400,
-                                            ),
-                                          ),
+                                        Image.asset(
+                                          width: scale(950),
+                                          height: scale(534),
+                                          AppWepb.parkingDefaultCar,
+                                          fit: BoxFit.contain,
                                         ),
-
-                                        /// КНОПКА ПОЧИНИТЬ
-                                        SquirqleGradientBorder(
-                                          width: scale(523),
-                                          height: scale(120),
-                                          cornerRadius: scale(30),
-                                          cornerSmoothing: 1.0,
-                                          borderWidth: scale(2),
-
-                                          // границы
-                                          isLinearBorderGradient: true,
-                                          borderGradientBegin: Alignment.bottomLeft,
-                                          borderGradientEnd: Alignment.topRight,
-                                          borderGradientColors: [
-                                            AppColors.white.withOpacity(.15),
-                                            AppColors.white.withOpacity(.1),
-                                            AppColors.white.withOpacity(.0),
-                                            AppColors.white.withOpacity(.15),
-                                          ],
-                                          borderGradientStops: [0.0, 0.1, 0.9, 1.0],
-
-                                          // 2-й фон - белый с радиальным градиентом
-                                          background2: BackgroundConfig(
-                                            colors: [
-                                              Colors.white.withOpacity(0.05),
-                                              Colors.white.withOpacity(0.0),
-                                            ],
-                                            isRadial: true,
-                                            gradientCenter: Alignment.topLeft,
-                                            gradientRadius: 3.0,
-                                          ),
-
-                                          child: Row(
-                                            spacing: scale(27),
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              SvgPicture.asset(
-                                                AppVectors.parkingRepair,
-                                                width: scale(50),
-                                              ),
-
-                                              Text(
-                                                context.locales.parking_repair.toUpperCase(),
-                                                style: AppFonts.fontHalvar50(
-                                                  context,
-                                                  AppColors.white.withOpacity(.5),
-                                                  FontWeight.w500,
-                                                ),
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
+                                        SizedBox(height: scale(200)),
                                       ],
                                     ),
-                                  ],
+                                  ),
+                                ),
+
+                                /// ПРАВАЯ ЧАСТЬ ЭКРАНА
+                                /// СОСТОЯНИЕ ПРГРЕСС БАР, КНОПКА ПОЧИНИТЬ
+                                Expanded(
+                                  flex: 1,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      /// СОСТОЯНИЕ ПРГРЕСС БАР
+                                      Column(
+                                        children: [
+                                          SizedBox(
+                                            width: scale(523),
+                                            child: ParkomatCardProgressBar(
+                                              progress: progress,
+                                              leftText: context.locales.parking_state,
+                                              rightText1: context.locales.parking_procent
+                                                  .replaceAll('%d', '${prgressProcent.toInt()}')
+                                                  .toLowerCase(),
+                                              rightText2: '',
+                                              height: scale(85),
+                                              progressBarHeight: scale(5),
+                                              activeColor: AppColors.parkingYellow,
+                                              inactiveColor: Colors.white.withOpacity(0.3),
+                                              textStyle: AppFonts.fontAkrobat35(
+                                                context,
+                                                AppColors.white.withOpacity(.5),
+                                                FontWeight.w400,
+                                              ),
+                                            ),
+                                          ),
+
+                                          SizedBox(height: scale(20)),
+
+                                          /// КНОПКА ПОЧИНИТЬ
+                                          SquirqleGradientBorder(
+                                            width: scale(523),
+                                            height: scale(120),
+                                            cornerRadius: scale(30),
+                                            cornerSmoothing: 1.0,
+                                            borderWidth: scale(2),
+
+                                            // границы
+                                            isLinearBorderGradient: true,
+                                            borderGradientBegin: Alignment.bottomLeft,
+                                            borderGradientEnd: Alignment.topRight,
+                                            borderGradientColors: [
+                                              AppColors.white.withOpacity(.15),
+                                              AppColors.white.withOpacity(.1),
+                                              AppColors.white.withOpacity(.0),
+                                              AppColors.white.withOpacity(.15),
+                                            ],
+                                            borderGradientStops: [0.0, 0.1, 0.9, 1.0],
+
+                                            // 2-й фон - белый с радиальным градиентом
+                                            background2: BackgroundConfig(
+                                              colors: [
+                                                Colors.white.withOpacity(0.05),
+                                                Colors.white.withOpacity(0.0),
+                                              ],
+                                              isRadial: true,
+                                              gradientCenter: Alignment.topLeft,
+                                              gradientRadius: 3.0,
+                                            ),
+
+                                            child: Row(
+                                              spacing: scale(27),
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                SvgPicture.asset(
+                                                  AppVectors.parkingRepair,
+                                                  width: scale(50),
+                                                ),
+
+                                                Text(
+                                                  context.locales.parking_repair.toUpperCase(),
+                                                  style: AppFonts.fontHalvar50(
+                                                    context,
+                                                    AppColors.white.withOpacity(.5),
+                                                    FontWeight.w500,
+                                                  ),
+                                                  maxLines: 1,
+                                                  overflow: TextOverflow.ellipsis,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            /// ЗАБРААТЬ ЦЕНА И КНОПКА
+                            Positioned(
+                              bottom: scale(40),
+                              right: 0,
+                              child: SizedBox(
+                                width: scale(601),
+                                child: ParkomatCardPrice(
+                                  isActive: true,
+                                  height: scale(120),
+                                  rightText: '120000'.formatPriceWithSpaces,
+                                  onButtonPressed: () {},
                                 ),
                               ),
-                            ],
-                          ),
-
-                          /// ЗАБРААТЬ ЦЕНА И КНОПКА
-                          Positioned(
-                            bottom: 0,
-                            right: 0,
-                            child: SizedBox(
-                              width: scale(601),
-                              child: ParkomatCardPrice(
-                                isActive: true,
-                                height: scale(120),
-                                rightText: '120000'.formatPriceWithSpaces,
-                                onButtonPressed: () {},
-                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
