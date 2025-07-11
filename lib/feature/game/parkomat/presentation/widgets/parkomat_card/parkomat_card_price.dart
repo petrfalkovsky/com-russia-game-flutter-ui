@@ -107,9 +107,7 @@ class ParkomatCardPrice extends StatelessWidget {
                     context.locales.parking_get.toUpperCase(),
                     style: AppFonts.fontHalvar50(
                       context,
-                      isActive
-                          ? AppColors.black
-                          : AppColors.black.withOpacity(0.6),
+                      isActive ? AppColors.black : AppColors.black.withOpacity(0.6),
                       FontWeight.w500,
                     ),
                     maxLines: 1,

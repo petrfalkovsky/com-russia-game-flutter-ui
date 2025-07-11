@@ -9,7 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ParkomatCardDetails extends StatelessWidget {
-  const ParkomatCardDetails({super.key});
+  final bool isSelected;
+
+  const ParkomatCardDetails({super.key, this.isSelected = false});
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +24,12 @@ class ParkomatCardDetails extends StatelessWidget {
           height: scale(268),
 
           // границы
-          borderWidth: scale(2),
+          borderWidth: isSelected ? scale(4) : scale(2),
           cornerRadius: scale(40),
           cornerSmoothing: 1.0,
-          borderGradientColors: [AppColors.white.withOpacity(.65), AppColors.white.withOpacity(.0)],
+          borderGradientColors: isSelected
+              ? [AppColors.parkingYellow, AppColors.parkingYellow]
+              : [AppColors.white.withOpacity(.65), AppColors.white.withOpacity(.0)],
           borderGradientStops: [0.0, 1.0],
           borderGradientRadius: 0.99,
 
