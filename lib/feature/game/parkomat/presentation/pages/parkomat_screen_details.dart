@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/extensions/string_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/shared_widgets/squirqle_gradient_border.dart';
@@ -14,8 +16,30 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class ParkomatDetailsScreen extends StatelessWidget {
+class ParkomatDetailsScreen extends StatefulWidget {
   const ParkomatDetailsScreen({super.key});
+
+  @override
+  State<ParkomatDetailsScreen> createState() => _ParkomatDetailsScreenState();
+}
+
+class _ParkomatDetailsScreenState extends State<ParkomatDetailsScreen> {
+  final ScrollController _scrollController = ScrollController();
+  int selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,14 +89,48 @@ class ParkomatDetailsScreen extends StatelessWidget {
                           Row(
                             children: [
                               /// ЛЕВАЯ ЧАСТЬ ЭКРАНА
-                              /// СОСТОЯНИЕ ПРГРЕСС БАР, КНОПКА ПОЧИНИТЬ
-                              Expanded(
-                                flex: 1,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                              /// СПИСОК КАРТОЧЕК АВТО
+                              SizedBox(
+                                width: scale(380) * 1.04 + scale(25),
+                                child: Stack(
                                   children: [
-                                    /// СПИСОК КАРТОЧЕК АВТО
-                                    ParkomatCardDetails(isSelected: true),
+                                    /// КАСТОМНЫЙ СКРОЛЛБАР СЛЕВА
+                                    Positioned(
+                                      left: 0,
+                                      top: 0,
+                                      bottom: 0,
+                                      child: _buildCustomScrollbar(),
+                                    ),
+
+                                    /// СПИСОК КАРТОЧЕК КАК КОЛОНКА
+                                    Positioned(
+                                      // left: scale(20),
+                                      top: 0,
+                                      bottom: 0,
+                                      right: 0,
+                                      child: SingleChildScrollView(
+                                        controller: _scrollController,
+                                        child: Column(
+                                          children: List.generate(8, (index) {
+                                            return Padding(
+                                              padding: EdgeInsets.only(
+                                                bottom: index == 7 ? 0 : scale(20),
+                                              ),
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  setState(() {
+                                                    selectedIndex = index;
+                                                  });
+                                                },
+                                                child: ParkomatCardDetails(
+                                                  isSelected: selectedIndex == index,
+                                                ),
+                                              ),
+                                            );
+                                          }),
+                                        ),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -98,7 +156,6 @@ class ParkomatDetailsScreen extends StatelessWidget {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.end,
-
                                   children: [
                                     /// СОСТОЯНИЕ ПРГРЕСС БАР
                                     Column(
@@ -208,6 +265,44 @@ class ParkomatDetailsScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildCustomScrollbar() {
+    if (!_scrollController.hasClients) return Container();
+
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.position.pixels;
+    final viewportHeight = _scrollController.position.viewportDimension;
+
+    if (maxScroll <= 0) return Container();
+
+    final scrollbarHeight = scale(800);
+    final thumbHeight = (viewportHeight / (maxScroll + viewportHeight)) * scrollbarHeight;
+    final thumbOffset = (currentScroll / maxScroll) * (scrollbarHeight - thumbHeight);
+
+    final clampedThumbHeight = math.max(scale(20), math.min(thumbHeight, scrollbarHeight));
+
+    return Container(
+      width: scale(10),
+      height: scrollbarHeight,
+      margin: EdgeInsets.only(top: scale(20)),
+      child: Stack(
+        children: [
+          // полоска скроллбара
+          Positioned(
+            top: thumbOffset,
+            child: Container(
+              width: scale(10),
+              height: clampedThumbHeight,
+              decoration: BoxDecoration(
+                color: AppColors.white.withOpacity(0.5),
+                borderRadius: BorderRadius.circular(scale(3)),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
