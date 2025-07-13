@@ -1,5 +1,5 @@
+import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/scale_context_util.dart';
 import 'package:flutter/material.dart';
-import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 
 abstract class AppFonts {
   static const fontAkrobat = 'Akrobat';

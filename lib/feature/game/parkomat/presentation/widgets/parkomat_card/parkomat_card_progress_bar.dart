@@ -1,9 +1,11 @@
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/adaptive_widget.dart';
+import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/scale_context_util.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:flutter/material.dart';
 
-class ParkomatCardProgressBar extends StatelessWidget {
+class ParkomatCardProgressBar extends AdaptiveWidget {
   final double progress;
   final String leftText;
   final String rightText1;
@@ -30,7 +32,7 @@ class ParkomatCardProgressBar extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildAdaptive(BuildContext context) {
     final effectiveTextStyle =
         textStyle ?? AppFonts.fontAkrobat35(context, AppColors.white, FontWeight.w400);
 

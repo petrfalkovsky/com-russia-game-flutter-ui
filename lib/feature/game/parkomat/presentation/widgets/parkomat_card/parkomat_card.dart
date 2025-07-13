@@ -5,9 +5,12 @@ import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_vectors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
+import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/adaptive_widget.dart';
+import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/scale_context_util.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:com_russia_game_flutter_ui/feature/game/parkomat/presentation/widgets/parkomat_card/parkomat_card_price.dart';
 import 'package:com_russia_game_flutter_ui/feature/game/parkomat/presentation/widgets/parkomat_card/parkomat_card_progress_bar.dart';
+import 'package:com_russia_game_flutter_ui/feature/game/parkomat/presentation/widgets/plates.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -17,11 +20,11 @@ enum BorderState {
   active, // толстые желтые границы и желтая иконка
 }
 
-class ParkomatCard extends StatelessWidget {
+class ParkomatCard extends AdaptiveWidget {
   const ParkomatCard({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildAdaptive(BuildContext context) {
     BorderState currentState = BorderState.normal;
 
     final double progress = 0.4;
@@ -289,15 +292,19 @@ class ParkomatCard extends StatelessWidget {
             ),
           ),
 
-          // Container(width: scale(100), height: scale(100), color: AppColors.green),
           Positioned(
             right: 0,
             child: Transform.translate(
               offset: Offset(scale(8), scale(-5)),
-              child: SvgPicture.asset(
+              child: LicensePlateWidget(
                 width: scale(195),
                 height: scale(45),
-                AppVectors.parkingCarPlatesRus,
+                plateInfo: PlateInfo(
+                  region: '777',
+                  number: 'A777AA', // или 'A 777 AA' - виджет обработает
+                  country: 'RU',
+                ),
+                onTap: () {},
               ),
             ),
           ),

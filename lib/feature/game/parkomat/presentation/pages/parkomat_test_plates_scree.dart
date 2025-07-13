@@ -2,13 +2,13 @@ import 'package:com_russia_game_flutter_ui/core/theme/app_vectors.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/adaptive_widget.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/scale_context_util.dart';
 import 'package:com_russia_game_flutter_ui/feature/game/parkomat/presentation/widgets/parkomat_appbar.dart';
-import 'package:com_russia_game_flutter_ui/feature/game/parkomat/presentation/widgets/parkomat_card/parkomat_card.dart';
+import 'package:com_russia_game_flutter_ui/feature/game/parkomat/presentation/widgets/plates.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ParkomatScreen extends AdaptiveWidget {
-  const ParkomatScreen({super.key});
+class ParkomatTestScreenScreen extends AdaptiveWidget {
+  const ParkomatTestScreenScreen({super.key});
 
   @override
   Widget buildAdaptive(BuildContext context) {
@@ -31,24 +31,18 @@ class ParkomatScreen extends AdaptiveWidget {
                     /// ЭППБАР
                     ParkomatAppBar(),
 
-                    Spacer(),
-
-                    /// СПИСОК КАРТОЧКА МАШИНЫ
                     Center(
-                      child: SizedBox(
-                        height: scale(806),
-                        child: ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 10,
-                          separatorBuilder: (context, index) => SizedBox(width: scale(30)),
-                          itemBuilder: (context, index) {
-                            return ParkomatCard();
-                          },
+                      child: LicensePlateWidget(
+                        width: scale(1950),
+                        height: scale(450),
+                        plateInfo: PlateInfo(
+                          region: '777',
+                          number: 'A777AA', // или 'A 777 AA' - виджет обработает
+                          country: 'RU',
                         ),
+                        onTap: () {},
                       ),
                     ),
-
-                    Spacer(),
                   ],
                 ),
               ),

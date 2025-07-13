@@ -1,9 +1,9 @@
 import 'package:com_russia_game_flutter_ui/core/shared_widgets/custom_animated_click.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
+import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/scale_context_util.dart';
 import 'package:flutter/material.dart';
 import 'package:com_russia_game_flutter_ui/core/shared_widgets/squirqle_gradient_border.dart';
-import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 
 class CloseWidgetV2 extends StatelessWidget {
   final Function()? onTap;

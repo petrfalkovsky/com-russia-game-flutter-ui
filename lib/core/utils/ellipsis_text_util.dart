@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
 
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_sdp_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_scale_fonts.dart';
 
 class EllipsisTextUtil extends StatelessWidget {
   final String text;

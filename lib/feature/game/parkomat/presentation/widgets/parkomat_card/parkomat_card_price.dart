@@ -3,10 +3,12 @@ import 'package:com_russia_game_flutter_ui/core/shared_widgets/custom_animated_c
 import 'package:com_russia_game_flutter_ui/core/shared_widgets/squirqle_gradient_border.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/adaptive_widget.dart';
+import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/scale_context_util.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:flutter/material.dart';
 
-class ParkomatCardPrice extends StatelessWidget {
+class ParkomatCardPrice extends AdaptiveWidget {
   final double height;
   final TextStyle? textStyle;
   final String? rightText;
@@ -23,10 +25,10 @@ class ParkomatCardPrice extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildAdaptive(BuildContext context) {
     return Row(
       children: [
-        // Основной контейнер с градиентными границами
+        // ОСНОВНОЙ КОНТЕЙНЕР
         Expanded(
           child: SizedBox(
             height: height,
@@ -34,7 +36,7 @@ class ParkomatCardPrice extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 _buildGradientDivider(context),
-
+    
                 // текст
                 Expanded(
                   child: Row(
@@ -69,13 +71,13 @@ class ParkomatCardPrice extends StatelessWidget {
                     ],
                   ),
                 ),
-
+    
                 _buildGradientDivider(context),
               ],
             ),
           ),
         ),
-
+    
         Expanded(
           child: TapAnimation(
             onTap: isActive ? onButtonPressed : null,
@@ -84,12 +86,12 @@ class ParkomatCardPrice extends StatelessWidget {
               borderWidth: 0,
               cornerRadius: scale(30),
               cornerSmoothing: 1.0,
-
+    
               // желтый градиент
               fillGradientColors: [AppColors.refYellowLight1, AppColors.refYellowDark2],
               fillGradientBegin: Alignment.topLeft,
               fillGradientEnd: Alignment.bottomRight,
-
+    
               // затемнение
               background2: isActive
                   ? null
@@ -99,9 +101,9 @@ class ParkomatCardPrice extends StatelessWidget {
                       gradientBegin: Alignment.topCenter,
                       gradientEnd: Alignment.bottomCenter,
                     ),
-
+    
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: scale(42)),
+                padding: EdgeInsets.symmetric(horizontal: scale(0)),
                 child: Center(
                   child: Text(
                     context.locales.parking_get.toUpperCase(),

@@ -1,8 +1,9 @@
+import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/adaptive_widget.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class SquirqleGradientBorder extends StatelessWidget {
+class SquirqleGradientBorder extends AdaptiveWidget {
   final double width;
   final double height;
   final double borderWidth;
@@ -69,45 +70,8 @@ class SquirqleGradientBorder extends StatelessWidget {
     this.padding,
   });
 
-  Widget _buildImage({required String path, required bool isSvg, required BoxFit fit}) {
-    if (isSvg) {
-      return SvgPicture.asset(path, fit: fit);
-    } else {
-      return Image.asset(path, fit: fit);
-    }
-  }
-
-  Widget _buildBackgroundLayer(BackgroundConfig config) {
-    return Positioned.fill(
-      child: ClipPath(
-        clipper: SquircleClipper(
-          cornerRadius: cornerRadius - borderWidth,
-          cornerSmoothing: cornerSmoothing,
-          borderWidth: borderWidth,
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: config.isRadial
-                ? RadialGradient(
-                    center: config.gradientCenter ?? Alignment.center,
-                    radius: config.gradientRadius ?? 1.0,
-                    colors: config.colors,
-                    stops: config.stops,
-                  )
-                : LinearGradient(
-                    begin: config.gradientBegin ?? Alignment.topCenter,
-                    end: config.gradientEnd ?? Alignment.bottomCenter,
-                    colors: config.colors,
-                    stops: config.stops,
-                  ),
-          ),
-        ),
-      ),
-    );
-  }
-
   @override
-  Widget build(BuildContext context) {
+  Widget buildAdaptive(BuildContext context) {
     final List<Color> borderColors =
         borderGradientColors ?? [Colors.white.withOpacity(.6), Colors.white.withOpacity(.0)];
 
@@ -201,6 +165,43 @@ class SquirqleGradientBorder extends StatelessWidget {
                 child: Padding(padding: padding ?? EdgeInsets.all(borderWidth), child: child),
               ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildImage({required String path, required bool isSvg, required BoxFit fit}) {
+    if (isSvg) {
+      return SvgPicture.asset(path, fit: fit);
+    } else {
+      return Image.asset(path, fit: fit);
+    }
+  }
+
+  Widget _buildBackgroundLayer(BackgroundConfig config) {
+    return Positioned.fill(
+      child: ClipPath(
+        clipper: SquircleClipper(
+          cornerRadius: cornerRadius - borderWidth,
+          cornerSmoothing: cornerSmoothing,
+          borderWidth: borderWidth,
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: config.isRadial
+                ? RadialGradient(
+                    center: config.gradientCenter ?? Alignment.center,
+                    radius: config.gradientRadius ?? 1.0,
+                    colors: config.colors,
+                    stops: config.stops,
+                  )
+                : LinearGradient(
+                    begin: config.gradientBegin ?? Alignment.topCenter,
+                    end: config.gradientEnd ?? Alignment.bottomCenter,
+                    colors: config.colors,
+                    stops: config.stops,
+                  ),
+          ),
         ),
       ),
     );

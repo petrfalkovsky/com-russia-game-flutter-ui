@@ -5,18 +5,20 @@ import 'package:com_russia_game_flutter_ui/core/shared_widgets/squirqle_gradient
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_vectors.dart';
+import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/adaptive_widget.dart';
+import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/scale_context_util.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:com_russia_game_flutter_ui/feature/launcher/referral_program/presentation/widgets/close_widget_v2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ParkomatAppBar extends StatelessWidget {
+class ParkomatAppBar extends AdaptiveWidget {
   final TextStyle? textStyle;
 
   const ParkomatAppBar({super.key, this.textStyle});
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildAdaptive(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         // Рассчитываем доступную ширину для поиска
