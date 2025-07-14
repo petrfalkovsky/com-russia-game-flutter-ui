@@ -78,6 +78,7 @@ flutter:
     - assets/webp/launcher/referral_program/
     - assets/svg/game/parking/
     - assets/webp/game/parking/
+    - assets/svg/game/car_plates/
 
   fonts:
     - family: Halvar
