@@ -51,7 +51,7 @@ class _RuVersionState extends State<RuVersion> {
           Expanded(
             flex: 3,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: widget.sized(16)),
+              padding: EdgeInsets.symmetric(horizontal: widget.sized(0)),
               child: Center(
                 child: Text(
                   formattedNumber,

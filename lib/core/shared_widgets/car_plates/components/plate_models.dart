@@ -5,7 +5,7 @@ enum PlateCountry {
   ua,
   by,
   kz,
-  exclusive,
+  brazil,
   none;
 
   double get aspectRatio {
@@ -15,7 +15,7 @@ enum PlateCountry {
       case PlateCountry.ru:
       case PlateCountry.kz:
         return 410 / 92;
-      case PlateCountry.exclusive:
+      case PlateCountry.brazil:
       case PlateCountry.none:
         return 368 / 92;
     }
@@ -31,7 +31,7 @@ enum PlateCountry {
         return AppVectors.plateBelarus;
       case PlateCountry.kz:
         return AppVectors.plateKazakhstan;
-      case PlateCountry.exclusive:
+      case PlateCountry.brazil:
       case PlateCountry.none:
         return AppVectors.plateEmptyRus;
     }

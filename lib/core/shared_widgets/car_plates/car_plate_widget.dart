@@ -66,7 +66,7 @@ class CarPlateWidget extends StatelessWidget {
             context,
             AppColors.black,
             FontWeight.w400,
-          ).copyWith(fontSize: 18 * size * scaleFactor, letterSpacing: 4.6),
+          ).copyWith(fontSize: 18 * size * scaleFactor, letterSpacing: 1.2),
           textAlign: TextAlign.center,
         ),
       ),
@@ -107,7 +107,7 @@ class CarPlateWidget extends StatelessWidget {
           onChanged: onChanged,
           scaleFactor: scaleFactor,
         );
-      case PlateCountry.exclusive:
+      case PlateCountry.brazil:
         return ExclusiveVersion(
           parts: parts,
           size: size,

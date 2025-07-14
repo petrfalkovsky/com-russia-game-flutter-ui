@@ -24,7 +24,7 @@ class _ByVersionState extends State<ByVersion> {
     context,
     AppColors.black,
     FontWeight.w400,
-  ).copyWith(fontSize: widget.sized(28), letterSpacing: 0);
+  ).copyWith(fontSize: widget.sized(32), letterSpacing: 0);
 
   String get formattedNumber {
     return '${widget.parts.number} ${widget.parts.serial}';

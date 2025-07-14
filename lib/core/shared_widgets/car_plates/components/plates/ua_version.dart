@@ -24,7 +24,7 @@ class _UaVersionState extends State<UaVersion> {
     context,
     AppColors.black,
     FontWeight.w400,
-  ).copyWith(fontSize: widget.sized(28));
+  ).copyWith(fontSize: widget.sized(32));
 
   @override
   Widget build(BuildContext context) {
