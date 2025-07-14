@@ -37,7 +37,7 @@ class ParkomatScreen extends AdaptiveWidget {
                     /// СПИСОК КАРТОЧКА МАШИНЫ
                     Center(
                       child: SizedBox(
-                        height: scale(806),
+                        height: scale(820),
                         child: ListView.separated(
                           scrollDirection: Axis.horizontal,
                           itemCount: MockPlatesData.mockPlates.length,
