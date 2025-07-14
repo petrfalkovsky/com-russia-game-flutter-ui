@@ -10,6 +10,7 @@ class ExclusiveVersion extends BasePlateVersion {
     required super.size,
     required super.editable,
     super.onChanged,
+    super.scaleFactor,
   });
 
   @override
@@ -17,56 +18,22 @@ class ExclusiveVersion extends BasePlateVersion {
 }
 
 class _ExclusiveVersionState extends State<ExclusiveVersion> {
-  late final TextEditingController controller;
-
   TextStyle customTextStyle(BuildContext context) => AppFonts.fontHalvar32(
     context,
     AppColors.black,
     FontWeight.w500,
-  ).copyWith(fontSize: widget.sized(20));
-
-  @override
-  void initState() {
-    controller = TextEditingController();
-    controller.value = TextEditingValue(text: widget.parts.number);
-    controller.addListener(() {
-      widget.onChanged?.call(widget.parts.copyWith(number: controller.text));
-    });
-    super.initState();
-  }
-
-  @override
-  void didUpdateWidget(covariant ExclusiveVersion oldWidget) {
-    controller.value = TextEditingValue(text: widget.parts.number);
-    super.didUpdateWidget(oldWidget);
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
+  ).copyWith(fontSize: widget.sized(24));
 
   @override
   Widget build(BuildContext context) {
     return Positioned.fill(
       child: Center(
         child: Padding(
-          padding: EdgeInsets.only(bottom: widget.sized(4)),
-          child: TextField(
-            readOnly: !widget.editable,
-            decoration: const InputDecoration(
-              counterText: '',
-              contentPadding: EdgeInsets.zero,
-              isDense: true,
-              border: InputBorder.none,
-            ),
-            autocorrect: false,
-            textAlignVertical: TextAlignVertical.center,
-            textAlign: TextAlign.center,
+          padding: EdgeInsets.symmetric(horizontal: widget.sized(8)),
+          child: Text(
+            widget.parts.number.isEmpty ? '' : widget.parts.number.toUpperCase(),
             style: customTextStyle(context),
-            controller: controller,
-            maxLength: 7,
+            textAlign: TextAlign.center,
           ),
         ),
       ),

@@ -12,6 +12,7 @@ class ByVersion extends BasePlateVersion {
     required super.size,
     required super.editable,
     super.onChanged,
+    super.scaleFactor,
   });
 
   @override
@@ -19,88 +20,29 @@ class ByVersion extends BasePlateVersion {
 }
 
 class _ByVersionState extends State<ByVersion> {
-  late final StyledEditingController controller;
-
-  TextStyle byDigitTextStyle(BuildContext context) => AppFonts.fontHalvar32(
+  TextStyle byTextStyle(BuildContext context) => AppFonts.fontHalvar32(
     context,
     AppColors.black,
     FontWeight.w400,
-  ).copyWith(fontSize: widget.sized(20), letterSpacing: widget.sized(1.2));
+  ).copyWith(fontSize: widget.sized(28), letterSpacing: 0);
 
-  TextStyle byLetterTextStyle(BuildContext context) => AppFonts.fontHalvar32(
-    context,
-    AppColors.black,
-    FontWeight.w400,
-  ).copyWith(fontSize: widget.sized(18), letterSpacing: widget.sized(1.2));
-
-  @override
-  void initState() {
-    controller = StyledEditingController(styleOverrider: getLetterStyle);
-    controller.value = byPatternFormatter.getInitalValue(
-      '${widget.parts.number} ${widget.parts.serial}',
-    );
-    controller.addListener(() {
-      var parts = controller.text.split(' ');
-      widget.onChanged?.call(
-        widget.parts.copyWith(number: parts.firstOrNull ?? '', serial: parts.lastOrNull ?? ''),
-      );
-    });
-    super.initState();
-  }
-
-  @override
-  void didUpdateWidget(covariant ByVersion oldWidget) {
-    controller.value = byPatternFormatter.getInitalValue(widget.parts.number);
-    super.didUpdateWidget(oldWidget);
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  TextStyle? getLetterStyle(TextEditingValue value, int index) {
-    if (index >= value.text.length) return null;
-    var char = value.text.characters.elementAt(index);
-    if (int.tryParse(char) == null) {
-      return byLetterTextStyle(context);
-    }
-    return byDigitTextStyle(context);
+  String get formattedNumber {
+    return '${widget.parts.number} ${widget.parts.serial}';
   }
 
   @override
   Widget build(BuildContext context) {
     return Positioned.fill(
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(
-          widget.sized(16),
-          widget.sized(4),
-          widget.sized(6),
-          widget.sized(6),
-        ),
+      child: Container(
+        padding: EdgeInsets.only(left: widget.sized(20)),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-              child: TextField(
-                readOnly: !widget.editable,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.zero,
-                  isDense: true,
-                  border: InputBorder.none,
-                  hintText: '1234 AB',
-                  hintStyle: byDigitTextStyle(context).copyWith(color: Colors.grey),
-                ),
-                autocorrect: false,
-                textAlign: TextAlign.center,
-                style: byDigitTextStyle(context),
-                controller: controller,
-                inputFormatters: [byPatternFormatter],
-              ),
-            ),
-            Text('-${widget.parts.region}', style: byDigitTextStyle(context)),
+            // Основной номер
+            Text(formattedNumber, style: byTextStyle(context), textAlign: TextAlign.center),
+            // Регион
+            Text('-${widget.parts.region}', style: byTextStyle(context)),
           ],
         ),
       ),

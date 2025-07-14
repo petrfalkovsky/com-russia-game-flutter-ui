@@ -6,6 +6,7 @@ abstract class BasePlateVersion extends StatefulWidget {
   final double size;
   final bool editable;
   final void Function(PlateParts parts)? onChanged;
+  final double scaleFactor;
 
   const BasePlateVersion({
     super.key,
@@ -13,7 +14,8 @@ abstract class BasePlateVersion extends StatefulWidget {
     required this.size,
     required this.editable,
     this.onChanged,
+    this.scaleFactor = 1.0,
   });
 
-  double sized(double v) => v * size;
+  double sized(double v) => v * size * scaleFactor; 
 }

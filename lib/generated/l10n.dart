@@ -299,6 +299,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Номера нет`
+  String get plates_no_has_number {
+    return Intl.message(
+      'Номера нет',
+      name: 'plates_no_has_number',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

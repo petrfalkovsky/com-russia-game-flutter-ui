@@ -12,6 +12,7 @@ class UaVersion extends BasePlateVersion {
     required super.size,
     required super.editable,
     super.onChanged,
+    super.scaleFactor,
   });
 
   @override
@@ -19,76 +20,29 @@ class UaVersion extends BasePlateVersion {
 }
 
 class _UaVersionState extends State<UaVersion> {
-  late final StyledEditingController controller;
-
-  TextStyle uaLetterTextStyle(BuildContext context) => AppFonts.fontHalvar32(
+  TextStyle uaTextStyle(BuildContext context) => AppFonts.fontHalvar32(
     context,
     AppColors.black,
     FontWeight.w400,
-  ).copyWith(fontSize: widget.sized(18));
-
-  TextStyle uaDigitTextStyle(BuildContext context) => AppFonts.fontHalvar32(
-    context,
-    AppColors.black,
-    FontWeight.w400,
-  ).copyWith(fontSize: widget.sized(20));
-
-  @override
-  void initState() {
-    controller = StyledEditingController(styleOverrider: (_, __) => uaDigitTextStyle(context));
-    controller.value = uaPatternFormatter.getInitalValue(widget.parts.number);
-    controller.addListener(() {
-      widget.onChanged?.call(widget.parts.copyWith(number: controller.text));
-    });
-    super.initState();
-  }
-
-  @override
-  void didUpdateWidget(covariant UaVersion oldWidget) {
-    controller.value = uaPatternFormatter.getInitalValue(widget.parts.number);
-    super.didUpdateWidget(oldWidget);
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
+  ).copyWith(fontSize: widget.sized(28));
 
   @override
   Widget build(BuildContext context) {
     return Positioned.fill(
-      child: Padding(
-        padding: EdgeInsets.only(
-          left: widget.sized(16),
-          bottom: widget.sized(5),
-          right: widget.sized(6),
-        ),
+      child: Container(
+        padding: EdgeInsets.only(left: widget.sized(16)),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(widget.parts.region, style: uaLetterTextStyle(context)),
-            Expanded(
-              child: TextField(
-                readOnly: !widget.editable,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(bottom: widget.sized(-1.2)),
-                  isDense: true,
-                  border: InputBorder.none,
-                  hintText: '1234',
-                  hintStyle: uaDigitTextStyle(context).copyWith(color: Colors.grey),
-                ),
-                textAlignVertical: TextAlignVertical.bottom,
-                textAlign: TextAlign.center,
-                style: uaDigitTextStyle(context),
-                autocorrect: false,
-                controller: controller,
-                inputFormatters: [uaPatternFormatter],
-                maxLines: 1,
-              ),
-            ),
-            Text(widget.parts.serial, style: uaLetterTextStyle(context)),
+            // Регион
+            Text(widget.parts.region, style: uaTextStyle(context)),
+            SizedBox(width: widget.sized(4)),
+            // Номер
+            Text(widget.parts.number, style: uaTextStyle(context)),
+            SizedBox(width: widget.sized(4)),
+            // Серия
+            Text(widget.parts.serial, style: uaTextStyle(context)),
           ],
         ),
       ),

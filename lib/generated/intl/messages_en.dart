@@ -35,6 +35,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "parking_repair": MessageLookupByLibrary.simpleMessage("Починить"),
         "parking_search": MessageLookupByLibrary.simpleMessage("Поиск"),
         "parking_state": MessageLookupByLibrary.simpleMessage("Состояние"),
+        "plates_no_has_number":
+            MessageLookupByLibrary.simpleMessage("Номера нет"),
         "ref_accumulated": MessageLookupByLibrary.simpleMessage("Накоплено"),
         "ref_claim": MessageLookupByLibrary.simpleMessage("Забрать"),
         "ref_description": MessageLookupByLibrary.simpleMessage(

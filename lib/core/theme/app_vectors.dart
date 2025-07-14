@@ -16,4 +16,5 @@ class AppVectors {
   static const String plateKazakhstan = '$_plates/plate_kazakhstan.svg';
   static const String plateRus = '$_plates/plate_rus.svg';
   static const String plateUkrain = '$_plates/plate_ukrain.svg';
+  static const String noHavePlate = '$_plates/no_have_plate.svg';
 }

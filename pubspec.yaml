@@ -79,6 +79,7 @@ flutter:
     - assets/svg/game/parking/
     - assets/webp/game/parking/
     - assets/svg/game/car_plates/
+    - assets/webp/game/car_plates/
 
   fonts:
     - family: Halvar

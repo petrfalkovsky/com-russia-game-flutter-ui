@@ -12,6 +12,7 @@ class KzVersion extends BasePlateVersion {
     required super.size,
     required super.editable,
     super.onChanged,
+    super.scaleFactor,
   });
 
   @override
@@ -19,101 +20,52 @@ class KzVersion extends BasePlateVersion {
 }
 
 class _KzVersionState extends State<KzVersion> {
-  late final StyledEditingController controller;
-
-  TextStyle kzLetterTextStyle(BuildContext context) => AppFonts.fontHalvar32(
+  TextStyle kzTextStyle(BuildContext context) => AppFonts.fontHalvar32(
     context,
     AppColors.black,
     FontWeight.w400,
-  ).copyWith(fontSize: widget.sized(17));
+  ).copyWith(fontSize: widget.sized(32));
 
-  TextStyle kzDigitTextStyle(BuildContext context) => AppFonts.fontHalvar32(
-    context,
-    AppColors.black,
-    FontWeight.w400,
-  ).copyWith(fontSize: widget.sized(22));
-
-  TextStyle kzRegionTextStyle(BuildContext context) => AppFonts.fontHalvar32(
-    context,
-    AppColors.black,
-    FontWeight.w400,
-  ).copyWith(fontSize: widget.sized(22));
-
-  @override
-  void initState() {
-    controller = StyledEditingController(styleOverrider: getLetterStyle);
-    controller.value = kzPatternFormatter.getInitalValue(widget.parts.number);
-    controller.addListener(() {
-      widget.onChanged?.call(widget.parts.copyWith(number: controller.text));
-    });
-    super.initState();
-  }
-
-  @override
-  void didUpdateWidget(covariant KzVersion oldWidget) {
-    controller.value = kzPatternFormatter.getInitalValue(widget.parts.number);
-    super.didUpdateWidget(oldWidget);
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  TextStyle? getLetterStyle(TextEditingValue value, int index) {
-    if (index >= value.text.length) return null;
-    if (int.tryParse(value.text.characters.elementAt(index)) != null) {
-      return kzDigitTextStyle(context);
-    }
-    return kzLetterTextStyle(context);
+  String get formattedNumber {
+    final number = widget.parts.number.toUpperCase();
+    // Форматируем как 123ABC
+    return number;
   }
 
   @override
   Widget build(BuildContext context) {
     return Positioned.fill(
-      child: Padding(
-        padding: EdgeInsets.only(bottom: widget.sized(4)),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Основная часть номера - 75% ширины
+          Expanded(
+            flex: 3,
+            child: Container(
+              padding: EdgeInsets.only(left: widget.sized(26)),
               child: Center(
-                child: Container(
-                  margin: EdgeInsets.only(left: widget.sized(19)),
-                  child: TextField(
-                    textAlignVertical: TextAlignVertical.bottom,
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.zero,
-                      hintText: '123 ABC',
-                      isDense: true,
-                      border: InputBorder.none,
-                      hintStyle: kzLetterTextStyle(context).copyWith(color: Colors.grey),
-                    ),
-                    readOnly: !widget.editable,
-                    style: kzDigitTextStyle(context),
-                    autocorrect: false,
-                    controller: controller,
-                    inputFormatters: [kzPatternFormatter],
-                  ),
+                child: Text(
+                  formattedNumber,
+                  style: kzTextStyle(context),
+                  textAlign: TextAlign.center,
                 ),
               ),
             ),
-            SizedBox(
-              width: widget.sized(32),
-              child: Center(
-                child: Padding(
-                  padding: EdgeInsets.only(right: widget.sized(4)),
-                  child: Text(
-                    widget.parts.region,
-                    textAlign: TextAlign.center,
-                    style: kzRegionTextStyle(context),
-                  ),
-                ),
+          ),
+          // Секция региона - 25% ширины
+          Expanded(
+            flex: 1,
+            child: Container(
+              padding: EdgeInsets.only(right: widget.sized(0)),
+              alignment: Alignment.center,
+              child: Text(
+                widget.parts.region,
+                style: kzTextStyle(context),
+                textAlign: TextAlign.center,
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
