@@ -1,5 +1,6 @@
 import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/extensions/string_extension.dart';
+import 'package:com_russia_game_flutter_ui/core/shared_widgets/car_plates/car_plate_widget.dart';
 import 'package:com_russia_game_flutter_ui/core/shared_widgets/squirqle_gradient_border.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
@@ -8,9 +9,9 @@ import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/adaptive_widget.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/scale_context_util.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
+import 'package:com_russia_game_flutter_ui/feature/game/parkomat/domain/mock_plate_data.dart';
 import 'package:com_russia_game_flutter_ui/feature/game/parkomat/presentation/widgets/parkomat_card/parkomat_card_price.dart';
 import 'package:com_russia_game_flutter_ui/feature/game/parkomat/presentation/widgets/parkomat_card/parkomat_card_progress_bar.dart';
-import 'package:com_russia_game_flutter_ui/feature/game/parkomat/presentation/widgets/plates.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -21,7 +22,9 @@ enum BorderState {
 }
 
 class ParkomatCard extends AdaptiveWidget {
-  const ParkomatCard({super.key});
+  final MockPlateData? mockPlateData; // ← Добавляем параметр для мок данных
+
+  const ParkomatCard({super.key, this.mockPlateData});
 
   @override
   Widget buildAdaptive(BuildContext context) {
@@ -35,6 +38,9 @@ class ParkomatCard extends AdaptiveWidget {
     final fuelProgress = liters / maxLiters;
 
     final literUnit = context.locales.parking_l.replaceAll('%d', '').trim();
+
+    // данные номера (мок или дефолтные)
+    final plateData = mockPlateData ?? MockPlatesData.mockPlates.first;
 
     return SizedBox(
       width: scale(573),
@@ -292,19 +298,17 @@ class ParkomatCard extends AdaptiveWidget {
             ),
           ),
 
+          // ЗАМЕНЯЕМ СТАРЫЙ ВИДЖЕТ НА НАШ НОВЫЙ
           Positioned(
             right: 0,
-            child: Transform.translate(
-              offset: Offset(scale(8), scale(-5)),
-              child: LicensePlateWidget(
-                width: scale(195),
-                height: scale(45),
-                plateInfo: PlateInfo(
-                  region: '777',
-                  number: 'A777AA', // или 'A 777 AA' - виджет обработает
-                  country: 'RU',
-                ),
-                onTap: () {},
+            child: SizedBox(
+              width: scale(195),
+              height: scale(45),
+              child: CarPlateWidget(
+                plateCountry: plateData.plateCountry,
+                parts: plateData.toPlateParts(),
+                editable: false,
+                scaleFactor: 1.0,
               ),
             ),
           ),

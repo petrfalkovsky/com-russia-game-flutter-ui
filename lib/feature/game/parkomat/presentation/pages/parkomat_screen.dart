@@ -1,6 +1,7 @@
 import 'package:com_russia_game_flutter_ui/core/theme/app_vectors.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/adaptive_widget.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/scale_context_util.dart';
+import 'package:com_russia_game_flutter_ui/feature/game/parkomat/domain/mock_plate_data.dart';
 import 'package:com_russia_game_flutter_ui/feature/game/parkomat/presentation/widgets/parkomat_appbar.dart';
 import 'package:com_russia_game_flutter_ui/feature/game/parkomat/presentation/widgets/parkomat_card/parkomat_card.dart';
 import 'package:device_preview/device_preview.dart';
@@ -39,10 +40,11 @@ class ParkomatScreen extends AdaptiveWidget {
                         height: scale(806),
                         child: ListView.separated(
                           scrollDirection: Axis.horizontal,
-                          itemCount: 10,
+                          itemCount: MockPlatesData.mockPlates.length,
                           separatorBuilder: (context, index) => SizedBox(width: scale(30)),
                           itemBuilder: (context, index) {
-                            return ParkomatCard();
+                            final mockPlate = MockPlatesData.getRandomPlate(index);
+                            return ParkomatCard(mockPlateData: mockPlate);
                           },
                         ),
                       ),
