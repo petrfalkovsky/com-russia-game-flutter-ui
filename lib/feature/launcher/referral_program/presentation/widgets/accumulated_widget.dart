@@ -2,8 +2,10 @@ import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dar
 import 'package:com_russia_game_flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/shared_widgets/custom_animated_click.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_scale_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_sdp_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
+import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/scale_context_util.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
@@ -175,13 +177,13 @@ class AccumulatedWidget extends StatelessWidget {
                             : AppColors.refGrey2.withOpacity(.8))
                       : null),
             ),
-            padding: EdgeInsets.symmetric(horizontal: sdpW(context, 42)),
+            padding: EdgeInsets.symmetric(horizontal: scale(42)),
             child: Row(
               children: [
                 Image.asset(leadIconPath ?? AppWepb.refLink, width: effectiveIconSize),
-    
-                sdpW(context, 30).width,
-    
+
+                scale(30).width,
+
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -189,15 +191,15 @@ class AccumulatedWidget extends StatelessWidget {
                     children: [
                       Text(
                         context.locales.ref_accumulated,
-                        style: AppSdpFonts.fontAkrobat30sdpW(
+                        style: AppFonts.fontAkrobat30(
                           context,
                           AppColors.white.withOpacity(.5),
                           FontWeight.w400,
                         ),
                       ),
-    
-                      sdpW(context, 20).height,
-    
+
+                      scale(20).height,
+
                       Row(
                         children: [
                           Expanded(
@@ -206,7 +208,7 @@ class AccumulatedWidget extends StatelessWidget {
                                 children: [
                                   TextSpan(
                                     text: textValue.toString(),
-                                    style: AppSdpFonts.fontAkrobat50sdpW(
+                                    style: AppFonts.fontAkrobat50(
                                       context,
                                       AppColors.white,
                                       FontWeight.w500,
@@ -214,7 +216,7 @@ class AccumulatedWidget extends StatelessWidget {
                                   ),
                                   TextSpan(
                                     text: ' ${context.locales.RC}',
-                                    style: AppSdpFonts.fontAkrobat50sdpW(
+                                    style: AppFonts.fontAkrobat50(
                                       context,
                                       AppColors.refYellowLight,
                                       FontWeight.w500,
@@ -323,12 +325,10 @@ class AccumulatedWidget extends StatelessWidget {
                   rightChild ??
                   Center(
                     child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: addIconPaddingLeft ?? sdpW(context, 48),
-                      ),
+                      padding: EdgeInsets.symmetric(horizontal: addIconPaddingLeft ?? scale(48)),
                       child: Text(
                         context.locales.ref_claim.toUpperCase(),
-                        style: AppSdpFonts.fontHalvar50sdpW(context, AppColors.black, FontWeight.w500),
+                        style: AppFonts.fontHalvar50(context, AppColors.black, FontWeight.w500),
                       ),
                     ),
                   ),

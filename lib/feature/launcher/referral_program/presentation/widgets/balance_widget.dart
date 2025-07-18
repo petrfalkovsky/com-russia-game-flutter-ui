@@ -1,8 +1,10 @@
 import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_scale_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_sdp_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
+import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/scale_context_util.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
@@ -81,7 +83,7 @@ class BalanceWidget extends StatelessWidget {
       children: [
         if (isGreyView)
           Positioned(
-            right: sdpW(context, 10),
+            right: scale(10),
             child: Container(
               width: height,
               height: height,
@@ -104,9 +106,9 @@ class BalanceWidget extends StatelessWidget {
                 color: isGreyView
                     ? Colors.transparent
                     : Color.fromARGB(255, 112, 84, 45).withOpacity(.6),
-                blurRadius: outerBlurRadius ?? sdpW(context, 60),
+                blurRadius: outerBlurRadius ?? scale(60),
                 spreadRadius: 0,
-                offset: Offset(sdpW(context, -20), sdpW(context, 0)),
+                offset: Offset(scale(-20), scale(0)),
               ),
             ],
             gradient: LinearGradient(
@@ -126,7 +128,7 @@ class BalanceWidget extends StatelessWidget {
                   shadows: [
                     Shadow(
                       color: AppColors.black.withOpacity(0.5),
-                      blurRadius: innerBlurRadius ?? sdpW(context, 50),
+                      blurRadius: innerBlurRadius ?? scale(50),
                     ),
                   ],
                   child: Container(
@@ -170,22 +172,22 @@ class BalanceWidget extends StatelessWidget {
                           isGreyView ? AppWepb.refMoney : AppWepb.refCoins,
                           width: effectiveIconSize,
                         ),
-                        sdpW(context, 14).width,
+                        scale(14).width,
 
                         Text(
                           textAlign: TextAlign.center,
                           balanceValue ?? '0',
-                          style: AppSdpFonts.fontAkrobat50sdpW(
+                          style: AppFonts.fontAkrobat50(
                             context,
                             AppColors.white,
                             FontWeight.w500,
                           ),
                         ),
-                        sdpW(context, 16).width,
+                        scale(16).width,
                         Text(
                           textAlign: TextAlign.center,
                           isGreyView ? '' : context.locales.RC,
-                          style: AppSdpFonts.fontHalvar50sdpW(
+                          style: AppFonts.fontHalvar50(
                             context,
                             isGreyView ? AppColors.green : AppColors.refYellowLight,
                             FontWeight.w500,
@@ -236,8 +238,8 @@ class BalanceWidget extends StatelessWidget {
         Center(
           child: Padding(
             padding: EdgeInsets.only(
-              left: addIconPaddingLeft ?? sdpW(context, 37),
-              right: addIconPaddingRight ?? sdpW(context, 37 + 3),
+              left: addIconPaddingLeft ?? scale(37),
+              right: addIconPaddingRight ?? scale(37 + 3),
             ),
             child: Image.asset(
               AppWepb.refAdd,
@@ -252,7 +254,7 @@ class BalanceWidget extends StatelessWidget {
     }
 
     return Padding(
-      padding: EdgeInsets.all(sdpW(context, isGreyView ? 2 : 0)),
+      padding: EdgeInsets.all(scale(isGreyView ? 2 : 0)),
       child: CustomPaint(
         painter: _GradientBorderPainter(
           borderColors: rightBorderColors,

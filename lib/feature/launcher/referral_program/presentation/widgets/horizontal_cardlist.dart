@@ -1,8 +1,10 @@
 import 'package:com_russia_game_flutter_ui/core/extensions/context_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/extensions/sizedbox_extension.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_colors.dart';
-import 'package:com_russia_game_flutter_ui/core/theme/app_scale_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_fonts.dart';
+import 'package:com_russia_game_flutter_ui/core/theme/app_sdp_fonts.dart';
 import 'package:com_russia_game_flutter_ui/core/theme/app_webp.dart';
+import 'package:com_russia_game_flutter_ui/core/utils/adaptive_scale/scale_context_util.dart';
 import 'package:com_russia_game_flutter_ui/core/utils/sdp.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
@@ -54,8 +56,6 @@ class HorizontalCardsList extends StatelessWidget {
   @override
   @override
   Widget build(BuildContext context) {
-    scale(double value) => sdpW(context, value) * 1.08;
-
     return SizedBox(
       height: containerHeight,
       child: Stack(
@@ -106,12 +106,12 @@ class HorizontalCardsList extends StatelessWidget {
                 children: [
                   Text(
                     context.locales.ref_you_invite,
-                    style: AppSdpFonts.fontAkrobat50sdpW(context, AppColors.white, FontWeight.w700),
+                    style: AppFonts.fontAkrobat50(context, AppColors.white, FontWeight.w700),
                   ),
                   scale(8).height,
                   Text(
                     '$invitedCount ${context.locales.ref_persons.toUpperCase()}',
-                    style: AppSdpFonts.fontAkrobat70sdpW(
+                    style: AppFonts.fontAkrobat70(
                       context,
                       AppColors.refYellowLight,
                       FontWeight.w800,
@@ -189,14 +189,14 @@ class HorizontalCardsList extends StatelessWidget {
             shadows: [
               BoxShadow(
                 color: AppColors.white.withOpacity(0.01),
-                blurRadius: sdpW(context, 40),
-                spreadRadius: sdpW(context, 1),
+                blurRadius: scale(40),
+                spreadRadius: scale(1),
                 offset: Offset(0, 0),
               ),
               BoxShadow(
                 color: AppColors.white.withOpacity(0.01),
-                blurRadius: sdpW(context, 60),
-                spreadRadius: sdpW(context, 20),
+                blurRadius: scale(60),
+                spreadRadius: scale(20),
                 offset: Offset(0, 0),
               ),
             ],
@@ -246,11 +246,7 @@ class HorizontalCardsList extends StatelessWidget {
                       child: Center(
                         child: Text(
                           buttonText.toUpperCase(),
-                          style: AppSdpFonts.fontAkrobat40sdpW(
-                            context,
-                            AppColors.black,
-                            FontWeight.w500,
-                          ),
+                          style: AppFonts.fontAkrobat40(context, AppColors.black, FontWeight.w500),
                         ),
                       ),
                     ),
@@ -261,9 +257,9 @@ class HorizontalCardsList extends StatelessWidget {
         ),
         if (showDone)
           Positioned(
-            top: sdpW(context, 18),
-            right: sdpW(context, 18),
-            child: Center(child: Image.asset(AppWepb.refDone, width: sdpW(context, 40))),
+            top: scale(18),
+            right: scale(18),
+            child: Center(child: Image.asset(AppWepb.refDone, width: scale(40))),
           ),
       ],
     );
@@ -297,10 +293,10 @@ class HorizontalCardsList extends StatelessWidget {
             ),
             child: Center(
               child: Padding(
-                padding: EdgeInsets.only(bottom: sdpW(context, 3)),
+                padding: EdgeInsets.only(bottom: scale(3)),
                 child: Text(
                   level.toString(),
-                  style: AppSdpFonts.fontAkrobat36sdpW(
+                  style: AppFonts.fontAkrobat36(
                     context,
                     isActive ? AppColors.black : AppColors.white.withOpacity(.2),
                     FontWeight.w900,
@@ -339,10 +335,10 @@ class HorizontalCardsList extends StatelessWidget {
             ),
             child: Center(
               child: Padding(
-                padding: EdgeInsets.only(bottom: sdpW(context, 3)),
+                padding: EdgeInsets.only(bottom: scale(3)),
                 child: Text(
                   level.toString(),
-                  style: AppSdpFonts.fontAkrobat36sdpW(
+                  style: AppFonts.fontAkrobat36(
                     context,
                     isActive ? AppColors.black : AppColors.white.withOpacity(.2),
                     FontWeight.w700,
