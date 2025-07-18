@@ -54,7 +54,7 @@ class HorizontalCardsList extends StatelessWidget {
   @override
   @override
   Widget build(BuildContext context) {
-    _sdp(double value) => sdpW(context, value) * 1.08;
+    scale(double value) => sdpW(context, value) * 1.08;
 
     return SizedBox(
       height: containerHeight,
@@ -69,7 +69,7 @@ class HorizontalCardsList extends StatelessWidget {
               height: containerHeight,
               decoration: BoxDecoration(
                 border: Border(
-                  top: BorderSide(width: _sdp(2), color: Colors.transparent),
+                  top: BorderSide(width: scale(2), color: Colors.transparent),
                 ),
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
@@ -96,10 +96,10 @@ class HorizontalCardsList extends StatelessWidget {
           // текст слева
           Positioned(
             bottom: 0,
-            left: _sdp(91),
+            left: scale(91),
             child: Container(
               height: containerHeight,
-              width: _sdp(353),
+              width: scale(353),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,7 +108,7 @@ class HorizontalCardsList extends StatelessWidget {
                     context.locales.ref_you_invite,
                     style: AppSdpFonts.fontAkrobat50sdpW(context, AppColors.white, FontWeight.w700),
                   ),
-                  _sdp(8).height,
+                  scale(8).height,
                   Text(
                     '$invitedCount ${context.locales.ref_persons.toUpperCase()}',
                     style: AppSdpFonts.fontAkrobat70sdpW(
@@ -124,8 +124,8 @@ class HorizontalCardsList extends StatelessWidget {
 
           // список
           Positioned(
-            bottom: _sdp(29),
-            left: _sdp(444),
+            bottom: scale(29),
+            left: scale(444),
             right: 0,
             child: ClipRect(
               child: SizedBox(

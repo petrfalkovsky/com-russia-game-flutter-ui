@@ -13,9 +13,11 @@ class ParkomatScreen extends AdaptiveWidget {
 
   @override
   Widget buildAdaptive(BuildContext context) {
-    return DevicePreview(
+    return 
+    DevicePreview(
       enabled: true,
-      builder: (context) => Material(
+      builder: (context) => 
+      Material(
         type: MaterialType.transparency,
         child: Center(
           child: Stack(

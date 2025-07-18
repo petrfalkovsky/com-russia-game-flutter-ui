@@ -51,7 +51,7 @@ class ParkomatCard extends AdaptiveWidget {
         // ОСНОВНОЙ КОНТЕНТ КАРТОЧКИ
         SizedBox(
           width: scale(573),
-          height: scale(806),
+          // height: scale(896),
           child: Stack(
             children: [
               /// БАЗОВЫЙ КОНТЕЙНЕР ДЛЯ КАРТОЧКИ
@@ -63,7 +63,7 @@ class ParkomatCard extends AdaptiveWidget {
                   bottom: scale(20),
                 ),
                 width: scale(573),
-                height: scale(806),
+                height: scale(796),
                 borderWidth: scale(2),
                 cornerRadius: scale(40),
                 cornerSmoothing: 1.0,
@@ -101,7 +101,22 @@ class ParkomatCard extends AdaptiveWidget {
                       ),
                     ),
 
-                    SizedBox(height: scale(18)),
+                    // /// ЗАГОЛОВОК КАРТОЧКИ
+                    // Align(
+                    //   alignment: Alignment.centerLeft,
+                    //   child: SizedBox(
+                    //     width: sdp(context, 420),
+                    //     child: Text(
+                    //       context.locales.parking_default_car_name.toUpperCase(),
+                    //       style: AppFonts.fontAkrobat35(context, AppColors.white, FontWeight.w700),
+                    //       maxLines: 2,
+                    //       overflow: TextOverflow.ellipsis,
+                    //     ),
+                    //   ),
+                    // ),
+
+                    // SizedBox(height: scale(18)),
+                    Spacer(),
 
                     /// ИЗОБРАЖЕНИЕ
                     Image.asset(
@@ -310,7 +325,7 @@ class ParkomatCard extends AdaptiveWidget {
 
         // ВИДЖЕТ НОМЕРА
         Positioned(
-          top: scale(0), 
+          top: scale(0),
           right: scale(0),
           child: SizedBox(
             width: scale(195),
